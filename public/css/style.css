@@ -1,0 +1,157 @@
+* {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.02em;
+}
+
+/*--------------NAVIGATION- LAYOUT VIEW--------------------------------*/
+
+.mynav {
+    background-color: #fff;
+}
+
+.mynav li a {
+    color: #062F4F;
+    font-size: 2vmin;
+    font-weight: bold;
+}
+
+.mynav li a:hover {
+    color: #e74c30;
+}
+
+.fa-bars {
+    color: #e74c30;
+    float: right;
+}
+
+.fa {
+    color: #e74c30;
+    float: right;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.fa:hover {
+    background-color: #062F4F;
+    color: #fff;
+    border-radius: 10px;
+}
+
+
+.btn-danger {
+    background-color: #e74c30 !important;
+}
+
+.contact-btn, .learnmore-btn {
+    color: #e74c30 !important;
+    background-color: #fff !important;
+    border: .02em solid #e74c30;
+}
+
+.contact-btn:hover, .learnmore-btn:hover  {
+    color: #fff !important;
+    background-color: #e74c30 !important;
+}
+
+.contactus-btn {
+    background-color: #e74c30 !important;
+    color: #fff !important;
+}
+
+@media(max-width: 1000px) {
+    .navbar .nav-item, .social-links {
+        display: block;
+        width: auto;
+        padding: 0 5em 0 0;
+        text-align: center;
+    }
+
+    .social-links {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    }
+
+    .social-items {
+        padding-left: 4em;
+    }
+
+    .welcome_content {
+        margin-top: 5rem;
+    }
+
+
+    .home {
+        padding-top: auto !important;
+    }
+
+    .home-row {
+        margin-top: auto !important;
+    }
+
+    .navbar-nav {
+        border-top: 1px solid #e74c30;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 0.8em;
+    }
+
+    .navbar-brand img {
+        width: 2rem !important;
+    }
+}
+
+
+/*--------------HOME-----------------------------------------------*/
+
+.home {
+    background-image: url('../images/home.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 70vh;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .col-lg-3 {
+        margin-left: 3em;
+    }
+
+    #email, #subscribe {
+        width: 60%;
+    }
+
+}
+
+
+/*--------------FOOTER-----------------------------------------------*/
+
+.flinks {
+    color: #062F4F;
+    font-size: 1.0em;
+    width: 5em;
+}
+
+.flinks:hover {
+    text-decoration: none;
+    color: #e74c30;
+}
+
+
+#subscribe {
+    width: 100% !important; 
+    padding: 5px !important;
+    color: #062F4F !important;
+    border: .5px solid #062F4F !important;
+}
+
+#subscribe:hover {
+    background-color: #277ec0 !important;
+    color: #fff !important;
+}
+
+.techsuite {
+    font-size: .7em;
+}

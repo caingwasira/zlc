@@ -1,0 +1,138 @@
+body {
+    color: #333;
+}
+
+a {
+    color: #062F4F;
+}
+
+
+/*------------------- PORTAL HEADER--------------------------------*/
+.info {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: flex-start;
+    align-self: center;
+    background-color: #062F4F;
+    padding: 20px;
+    border-radius: 5px;
+    margin: auto;
+    width: 100%;
+}
+
+#tables {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-right: 10px;
+    border-radius: 3px;
+    background-color: #062F4F;
+    color: #fff;
+    padding: 3px;
+    border: 1px solid #fff;
+    width: 20%;
+    border: none;
+}
+
+#create_form {
+    width: 100%;
+    font-family: 'Times New Roman', Times, serif;
+    margin-right: 10px;
+    font-weight: bold;
+    border-radius: 3px;
+    background-color: #062F4F;
+    color: #fff;
+}
+
+#create_input, #search_option, #search_button {
+    border-radius: 3px;
+    font-weight: bold;
+    border: 1px solid rgb(67, 163, 236);
+    padding: 2px 4px 2px 4px;
+}
+
+#create_input {
+    width: 30%;
+    padding: 4px;
+}
+
+#search_button {
+    padding: 3.5px;
+}
+
+#counter {
+    background-color: #fff;
+    border-radius: 3px;
+    margin: auto;
+    padding: 2px 4px 2px 4px;
+    color: #400000;
+    font-weight: bold;
+    border: 1px solid rgb(12, 123, 207);
+}
+
+
+/*------------------- TABLE--------------------------------*/
+
+table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin: auto;
+    margin-right: 20px;
+    color: #fff;
+    border-collapse: collapse;
+    width: 100%;
+    height: 70vh;
+}
+
+table tr {
+    background-color: #062F4F;
+    color: #fff;
+}
+
+thead {
+    margin-bottom: 3px;
+}
+
+thead tr {
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+}
+
+thead tr th, tbody tr td {
+    padding: 3px;
+}
+
+tbody tr:hover {
+    background-color: #dfdddd;
+}
+
+tbody tr td {
+    text-align: center
+} 
+
+.trow {
+    background-color: #e74000;
+    color: #062F4F;
+}
+
+.update-button, .delete-button, .pname, .id {
+    font-family: 'Times New Roman', Times, serif;
+    padding: 2px;
+    font-weight: bold;
+    margin-left: 3px;
+    color: #062F4F;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+    border: none;
+    text-align: center;
+}
+.update-button, .delete-button {
+    background-color: #eeeeee;  
+    width: auto;
+    padding: 4px;
+}
+.update-button:hover {background-color: green; color: #fff; border: none; cursor: pointer;}
+.delete-button:hover {background-color: #e74000; color: #fff; border: none; cursor: pointer;}

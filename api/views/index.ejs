@@ -1,0 +1,78 @@
+<section>
+    <div class="data-container container-fluid">
+        <div class="row m-auto">
+            <div class="header mb-2">
+                <b>DATA MANAGEMENT PORTAL</b>
+            </div>
+            <div class="info">
+                <select name="tables" onchange="showTable(this.value)" id="tables" size="1">
+                    <option value="" selected>Select Table</option>
+                    <option value="beneficiary_details" id="beneficiary-details">Beneficiary Details</option>
+                    <option value="boom_sprayers" id="boom-sprayers">Boom Sprayers</option>
+                    <option value="spouse_details" id="spouse-details">Spouse Details</option>
+                </select>
+                <form action="" id="search_table">
+                    <input type="text" id="search_by_id" placeholder="Search table...">
+                    <span class="counter" id="counter"></span>
+                    <span><button class="print"><i class="fas fa-print"></i></button></span>
+                    <span><button class="print"><i class="fas fa-plus-circle"></i></button></span>
+                </form>
+            </div>
+
+            <table class="mt-2">
+                <thead>
+                    
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<script>
+
+    const showTable = value => {
+        if(value == "") $('table').removeClass("table")
+        
+        $.ajax({
+            url: '/data',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ table: value })
+        }).done((table) => {
+            console.log(table[0])
+            const thead = $("thead")
+            const tbody = $("tbody")
+
+            thead.append(`
+                    <tr>
+                        <% for(let key in table[0]) { %>
+                            <% if(table[0].hasOwnProperty) { %>
+                                <th> <%= key %> </th>
+                            <% } %>
+                        <% } %>
+                    </tr>
+            `)
+
+            tbody.append(`
+                    <% table.map((record) => { %>
+                        <tr>
+                            <% for(let key in record) { %>
+                                <% if(record.hasOwnProperty) { %>
+                                    <td> <%= record[key] %> </td>
+                                <% } %>
+                            <% } %>
+                        </tr>
+                    <% }) %>
+            `)
+
+        }).fail((err) => {
+            console.log(err.message)
+        })
+
+        $("table").addClass("table")
+        $(".counter").html('<%= count %>').css("display", "inline-block")
+    }
+
+</script>

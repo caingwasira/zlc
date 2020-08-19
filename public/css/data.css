@@ -1,13 +1,3 @@
-body {
-    color: #333;
-}
-
-a {
-    color: #062F4F;
-}
-
-
-/*------------------- PORTAL HEADER--------------------------------*/
 .info {
     box-sizing: border-box;
     display: flex;
@@ -16,15 +6,15 @@ a {
     align-items: flex-start;
     align-self: center;
     background-color: #062F4F;
-    padding: 20px;
+    padding: 5px;
     border-radius: 5px;
-    margin: auto;
+    margin: auto !important;
     width: 100%;
 }
-
+    
+    
 #tables {
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
+    font-size: .8em;
     margin-right: 10px;
     border-radius: 3px;
     background-color: #062F4F;
@@ -35,26 +25,29 @@ a {
     border: none;
 }
 
-#create_form {
+#search_table {
     width: 100%;
-    font-family: 'Times New Roman', Times, serif;
     margin-right: 10px;
     font-weight: bold;
+    font-size: .8em;
     border-radius: 3px;
     background-color: #062F4F;
     color: #fff;
 }
 
-#create_input, #search_option, #search_button {
+#search_by_id {
+    width: 50%;
     border-radius: 3px;
-    font-weight: bold;
-    border: 1px solid rgb(67, 163, 236);
-    padding: 2px 4px 2px 4px;
+    padding: 3px;
+    border: none;
+    color: #fff;
+    background-color: #2070ad;
 }
 
-#create_input {
-    width: 30%;
-    padding: 4px;
+#search_by_id:focus {
+border: none;
+color: #fff;
+background-color: #2070ad;
 }
 
 #search_button {
@@ -62,77 +55,73 @@ a {
 }
 
 #counter {
-    background-color: #fff;
-    border-radius: 3px;
-    margin: auto;
-    padding: 2px 4px 2px 4px;
-    color: #400000;
+    display: none;
+    border-radius: 5px;
+    float: right;
+    margin-left: 1em;
+    padding: 3px;
+    color: #fff;
     font-weight: bold;
-    border: 1px solid rgb(12, 123, 207);
+    font-size: small;
+    border: 1px solid #2070ad;
 }
 
+.print {
+    background-color: #062F4F;
+    float: right;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+}
 
-/*------------------- TABLE--------------------------------*/
+.print:hover {
+    color: #e74;
+}
+
+/*-----------------------TABLE------------------------------*/
+
+.table {
+    display: inline-block;
+    margin-top: 2rem;
+}
 
 table {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
     margin: auto;
-    margin-right: 20px;
-    color: #fff;
+    border: 1px solid #062F4F;
     border-collapse: collapse;
     width: 100%;
     height: 70vh;
 }
 
-table tr {
+thead tr th {
+    padding: 5px 30px 5px 0px;
+    color: #333;
+    font-size: small;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(odd) {
     background-color: #062F4F;
     color: #fff;
+    width: 100%;
 }
 
-thead {
-    margin-bottom: 3px;
-}
-
-thead tr {
-    border-bottom: 1px solid #fff;
-    border-right: 1px solid #fff;
-}
-
-thead tr th, tbody tr td {
-    padding: 3px;
+tbody tr:nth-child(even) {
+    background-color: #fff;
+    color: #062F4F;
+    width: 100%;
 }
 
 tbody tr:hover {
-    background-color: #dfdddd;
+    color: #ee7744;
+    border: .8px solid #ee7744;
 }
 
 tbody tr td {
-    text-align: center
-} 
-
-.trow {
-    background-color: #e74000;
-    color: #062F4F;
+    font-size: .8em;
+    font-weight: 400;
+    padding: 10px;
 }
-
-.update-button, .delete-button, .pname, .id {
-    font-family: 'Times New Roman', Times, serif;
-    padding: 2px;
-    font-weight: bold;
-    margin-left: 3px;
-    color: #062F4F;
-    border-radius: 5px;
-    font-size: 14px;
-    width: 100%;
-    border: none;
-    text-align: center;
-}
-.update-button, .delete-button {
-    background-color: #eeeeee;  
-    width: auto;
-    padding: 4px;
-}
-.update-button:hover {background-color: green; color: #fff; border: none; cursor: pointer;}
-.delete-button:hover {background-color: #e74000; color: #fff; border: none; cursor: pointer;}

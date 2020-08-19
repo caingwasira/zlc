@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ed06971682.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/data.css">
+    <title>Zimbabwe Land Commission</title>
+</head>
+<body>
+    <section>
+        <div class="data-container container-fluid">
+            <div class="row m-auto">
+                <div class="header mb-2">
+                    <b>DATA MANAGEMENT PORTAL</b>
+                </div>
+                <div class="info">
+                    <select name="tables" onchange="showTable(this.value)" id="tables" size="1">
+                        <option value="" selected>Select Table</option>
+                        <option value="beneficiary_details" id="beneficiary-details">Beneficiary Details</option>
+                        <option value="boom_sprayers" id="boom-sprayers">Boom Sprayers</option>
+                        <option value="spouse_details" id="spouse-details">Spouse Details</option>
+                    </select>
+                    <form action="" id="search_table">
+                        <input type="text" id="search_by_id" placeholder="Search table...">
+                        <span class="counter" id="counter"></span>
+                        <span><button class="print"><i class="fas fa-print"></i></button></span>
+                        <span><button class="print"><i class="fas fa-plus-circle"></i></button></span>
+                    </form>
+                </div>
+
+                <table>
+                    <thead>
+                        
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <script>
+
+        const showTable = value => {
+            if(value == "") $('table').removeClass("table")
+
+            const thead = $("thead")
+            const tbody = $("tbody")
+            thead.html('')
+            tbody.html('')
+
+
+            fetch(`/data/table?table=${value}`).then((response) => {
+                response.json().then((table) => {
+                    const headers = Object.keys(table[0])
+                    console.log(headers)
+
+                    let tr = ''
+                    for(let i = 0; i < headers.length; i++) {
+                        tr += `<th> ${headers[i]} </th>`
+                    }
+
+                    let rows = '<tr>'
+                    table.forEach((row) => {
+                        let data = ''
+                        for(let key in row) {
+                            data += `<td> ${row[key]} </td>`
+                        }
+                        rows += data + '</tr>'
+                    })
+
+                    thead.append('<tr>'+ tr + '</tr>')
+                    tbody.append(rows)
+                    $('.counter').html(table.length).css('display', 'inline-block')
+                })
+            })
+        }
+
+    </script>
+</body>
+</html>

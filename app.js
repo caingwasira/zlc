@@ -1,19 +1,19 @@
 const express = require('express')
 const path = require('path')
-const expressLayouts = require('express-ejs-layouts')
+const hbs = require('hbs')
 const bodyParser = require('body-parser')
 const app = express()
 
-app.use(expressLayouts);
-app.set('view engine', 'ejs')
-app.set('views', path.join(__dirname, './api/views'))
 app.use(express.static('public'))
+app.set('view engine', 'hbs')
+app.set('views', path.join(__dirname, './api/views'))
+hbs.registerPartials(path.join(__dirname, './api/views/partials'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 //Routes
-const DataRoute = require('./api/routes/boom_sprayers')
-app.use('/data', DataRoute)
+const Data = require('./api/routes/boom_sprayers')
+app.use(Data)
 
 app.use( (req, res, next) => {
     const error = new Error('Not found');

@@ -1,5 +1,11 @@
-* {
-    font-family: 'Work Sans', sans-serif;
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0 5px;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-size: 1.02em;
 }
 
@@ -10,52 +16,46 @@
 }
 
 .mynav li a {
-    color: #062F4F;
+    color: #0b65be;
     font-size: 2vmin;
     font-weight: bold;
 }
 
 .mynav li a:hover {
-    color: #e74c30;
+    color: #5e18af;
 }
 
 .fa-bars {
-    color: #e74c30;
+    color: #0b65be;
     float: right;
 }
 
 .fa {
-    color: #e74c30;
+    color: #0b65be;
     float: right;
     padding: 5px;
     font-size: 16px;
 }
 
 .fa:hover {
-    background-color: #062F4F;
-    color: #fff;
+    color: #5e18af;
     border-radius: 10px;
 }
 
 
 .btn-danger {
-    background-color: #e74c30 !important;
+    background-color: #0b65be !important;
 }
 
-.contact-btn, .learnmore-btn {
-    color: #e74c30 !important;
+.contact-btn {
+    color: #0b65be !important;
     background-color: #fff !important;
-    border: .02em solid #e74c30;
+    border: .02em solid #0b65be;
 }
 
 .contact-btn:hover, .learnmore-btn:hover  {
     color: #fff !important;
-    background-color: #e74c30 !important;
-}
-
-.contactus-btn {
-    background-color: #e74c30 !important;
-    color: #fff !important;
+    background-color: #5e18af !important;
 }
 
 @media(max-width: 1000px) {
@@ -90,7 +90,7 @@
     }
 
     .navbar-nav {
-        border-top: 1px solid #e74c30;
+        border-top: 1px solid #0b65be;
     }
 
     .navbar-nav .nav-link {
@@ -106,6 +106,10 @@
 /*--------------HOME-----------------------------------------------*/
 
 .home {
+    flex-grow: 1;
+}
+
+.main-content {
     background-image: url('../images/home.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -128,27 +132,39 @@
 
 /*--------------FOOTER-----------------------------------------------*/
 
+footer p.header {
+    color: #105285;
+    font-size: small
+}
+
+footer p.text {
+    font-size: small;
+    padding-right: 3rem;
+}
+
 .flinks {
-    color: #062F4F;
-    font-size: 1.0em;
-    width: 5em;
+    color: #0b65be;
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: #0a4b8d;
+    font-size: smaller;
 }
 
 .flinks:hover {
     text-decoration: none;
-    color: #e74c30;
+    color: #5e18af;
 }
 
 
 #subscribe {
     width: 100% !important; 
     padding: 5px !important;
-    color: #062F4F !important;
-    border: .5px solid #062F4F !important;
+    color: #0b65be !important;
+    border: .5px solid #0b65be !important;
 }
 
 #subscribe:hover {
-    background-color: #277ec0 !important;
+    background-color: #0b65be !important;
     color: #fff !important;
 }
 

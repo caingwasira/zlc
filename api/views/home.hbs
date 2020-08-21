@@ -13,103 +13,19 @@
 </head>
 <body>
     {{>header}}
-    <nav class="mynav navbar navbar-expand-lg sticky-top shadow-sm">
-        <a class="navbar-brand w-25 ml-4 text-muted" href="#">
-            <h4><b>ZLC</b></h4>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-          <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav pl-5">
-            <li class="nav-item pl-4 active">
-              <a style="color: #062F4F;" class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item pl-4">
-              <a style="color: #062F4F;" class="nav-link" href="/blog">Legal</a>
-            </li>
-            <li class="nav-item pl-4">
-              <a style="color: #062F4F;" class="nav-link" href="/data">ICT</a>
-            </li>
-            <li class="nav-item pl-4">
-                <a style="color: #062F4F;" class="nav-link" href="tables.html">Land Audit</a>
-            </li>
-            <li class="nav-item pl-4">
-                <a style="color: #062F4F;" class="contact-btn nav-link rounded" href="/contact">About</a>
-            </li> 
-          </ul>
-          <div class=" social-links row mx-auto ml-5">
-            <div class="social-items float-right">
-                <a cl href="https://www.instagram.com/cg_femo"><i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.instagram.com/cg_femo"><i class="fa fa-facebook-square" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.instagram.com/hushpappi"><i class="fa fa-twitter-square" aria-hidden="true"></i>
-                </a>
+    {{>nav}}
+
+    <div class="home">
+      <section class="container-fluid main-content pt-5 mb-5 d-flex justify-content-center">
+        <div class="row mb-5">
+            <div class="col-md-5 mb-5">
+              <p class="mb-5">ZLC</p>
             </div>
-          </div>
-        </div>  
-    </nav>
-    <section class="container-fluid home pt-5 mb-5 d-flex justify-content-center">
-      <div class="row mb-5">
-          <div class="col-md-5 mb-5">
-            <p class="mb-5">ZLC</p>
-          </div>
-      </div>
-  </section>
-    <footer class="footer container-fluid mt-5">
-      <div class="row d-flex justify-content-center bg-light pl-5 pr-5">
-
-        <div class="col-lg-3 mt-5 mb-3">
-          <p style="color: #062F4F; font-size: small;"><b>ZIMBABWE LAND COMMISSION</b></p>
-          <p class="text-muted" style="color: #062F4F;font-size: 1.0em;padding-right: 5em;">
-            zlc
-          </p>
         </div>
-
-        <div class="col-lg-3 mt-5 mb-3">
-          <p style="color: #062F4F;font-size: small;"><b>GET IN TOUCH WITH US</b></p>
-          <div class="social-links">
-            <a class="float-left" href="https://www.instagram.com/cg_femo"><i class="fa fa-instagram" aria-hidden="true"></i>
-            </a>
-            <a class="float-left" href="https://www.instagram.com/cg_femo"><i class="fa fa-facebook-square" aria-hidden="true"></i>
-            </a>
-            <a class="float-left" href="https://www.instagram.com/hushpappi"><i class="fa fa-twitter-square" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-
-        <div class="col-lg-3 mt-5 mb-3">
-          <p style="color: #062F4F;font-size: small;"><b>LINKS</b></p>
-          <div class="social">
-            <li class="pb-4 d-flex flex-column">
-              <a class="flinks pb-2" href="/blog">Legal</a>
-              <a class="flinks pb-2" href="/data">ICT</a>
-              <a class="flinks pb-2" href="/resources">Land Audit</a>
-              <a class="flinks pb-2" href="tables.html">About</a>
-            </li>
-          </div>
-        </div>
-
-        <div class="col-lg-3 mt-5">
-          <p style="color: #062F4F;font-size: small;"><b>SUBSCRIBE</b></p>
-          <form class="" action="/models/navdata.js" method="POST">
-            <input class="bg-white p-2 border border-0" 
-                   type="email" 
-                   name="email" 
-                   id="email" 
-                   placeholder="Email" 
-                   style="width: 100%;">
-            <input type="submit" value="Subscribe"
-                   id="subscribe" 
-                   class="mt-4 text-white border border-0">
-          </form>
-        </div>
-        <p class="techsuite text-muted text-center pt-4">Cain Gwasira
-          <span class="text-muted"> | contact us +263785170977 | techsuite@gmail.com|</span>
-        </p>
-      </div>
-    </footer>
+      </section>
+    </div>
+    
+    {{>footer}}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>

@@ -2,6 +2,9 @@ const express = require('express')
 const path = require('path')
 const hbs = require('hbs')
 const bodyParser = require('body-parser')
+const Data = require('./api/routes/boom_sprayers')
+const errorHandler = require('./api/middleware/errors')
+
 const app = express()
 
 app.use(express.static('public'))
@@ -11,19 +14,8 @@ hbs.registerPartials(path.join(__dirname, './api/views/partials'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-//Routes
-const Data = require('./api/routes/boom_sprayers')
 app.use(Data)
+app.use(errorHandler)
 
-app.use( (req, res, next) => {
-    const error = new Error('Not found');
-    error.status = 404;
-    next(error)
-})
-app.use((error, req, res, next) => {
-    res.render('404', {
-        errors: error
-    })
-    next()
-})
+
 module.exports = app;

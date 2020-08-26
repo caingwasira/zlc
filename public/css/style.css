@@ -9,6 +9,14 @@ body {
     font-size: 1.02em;
 }
 
+/*--------------HEADER--------------------------------*/
+
+.header {
+    color: #006622;
+    font-weight: bold;
+    font-size: 2vmin;
+}
+
 /*--------------NAVIGATION- LAYOUT VIEW--------------------------------*/
 
 .mynav {
@@ -16,46 +24,41 @@ body {
 }
 
 .mynav li a {
-    color: #0b65be;
+    color: #006622;
     font-size: 2vmin;
     font-weight: bold;
 }
 
 .mynav li a:hover {
-    color: #5e18af;
+    color: #69ca89;
 }
 
 .fa-bars {
-    color: #0b65be;
+    color: #006622;
     float: right;
 }
 
 .fa {
-    color: #0b65be;
+    color: #006622;
     float: right;
     padding: 5px;
     font-size: 16px;
 }
 
 .fa:hover {
-    color: #5e18af;
+    color: #6cd38f;
     border-radius: 10px;
 }
 
-
-.btn-danger {
-    background-color: #0b65be !important;
-}
-
 .contact-btn {
-    color: #0b65be !important;
+    color: #006622 !important;
     background-color: #fff !important;
-    border: .02em solid #0b65be;
+    border: .02em solid #006622;
 }
 
 .contact-btn:hover, .learnmore-btn:hover  {
     color: #fff !important;
-    background-color: #5e18af !important;
+    background-color: #006622 !important;
 }
 
 @media(max-width: 1000px) {
@@ -133,38 +136,36 @@ body {
 /*--------------FOOTER-----------------------------------------------*/
 
 footer p.header {
-    color: #105285;
+    color: #024b1a;
     font-size: small
 }
 
 footer p.text {
     font-size: small;
+    color: #4e4e4e;
     padding-right: 3rem;
 }
 
 .flinks {
-    color: #0b65be;
-    text-decoration-line: underline;
-    text-decoration-thickness: 2px;
-    text-decoration-color: #0a4b8d;
+    color: #006622;
     font-size: smaller;
 }
 
 .flinks:hover {
     text-decoration: none;
-    color: #5e18af;
+    color: #54b875;
 }
 
 
 #subscribe {
     width: 100% !important; 
     padding: 5px !important;
-    color: #0b65be !important;
-    border: .5px solid #0b65be !important;
+    color: #006622 !important;
+    border: .5px solid #006622 !important;
 }
 
 #subscribe:hover {
-    background-color: #0b65be !important;
+    background-color: #006622 !important;
     color: #fff !important;
 }
 

@@ -4,7 +4,8 @@ const conn = 'postgressql://postgres:zlc2019@localhost:5432/master_database';
 
 const pool = new Pool({
     connectionString: conn,
-    ssl: false
+    ssl: false,
+    connectionTimeoutMillis: 5000
 });
 
 pool.connect( (err, connection) => {

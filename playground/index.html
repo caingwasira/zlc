@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/ed06971682.js" crossorigin="anonymous"></script>
+    <title>UsersList</title>
+</head>
+<body style="padding: 0px 200px;">
+    <div class="container mt-4">
+        <h4 class="display-6 text-center">
+            <i class="fas fa-book-open text-primary"></i>
+            <span class="text-primary">User</span>List
+        </h4>
+        <form action="dashboard.html" id="users-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="role">role</label>
+                <input type="text" id="role" class="form-control">
+            </div>
+            <input type="submit" class="btn btn-primary btn-block" value="Login">
+            <a href="dashboard.html" class="btn btn-outline-primary btn-block">Dashboard</a>
+        </form>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="user-list"></tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

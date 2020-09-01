@@ -35,7 +35,7 @@
         <div class="data-container container-fluid">
             <div class="row m-auto">
                 <div class="info">
-                    <div class="dropdown">
+                    <div class="dropdown col-md-2">
                         <input class="myInput" onclick="show()" type="text" placeholder="Select Table..">
                         <div id="myDropdown" class="dropdown-content">
                             <option value="clear" id="clear">Clear</option>
@@ -45,14 +45,16 @@
                             <option value="plot_farm_identification" id="plot">Plot Farm Identification</option>
                         </div>
                     </div>
-                    <div id="search_table">
+                    <div class="col-md-6" id="search_table">
                         <select name="search" id="search-criteria"></select>
                         <input type="text" id="search_by_id" placeholder="Search table...">
                     </div>
-                    <span class="table-name" id="counter"></span>
-                    <span class="counter" id="counter"></span>
-                    <span><button class="print"><i class="fas fa-print"></i></button></span>
-                    <span><button class="print"><i class="fas fa-plus-circle"></i></button></span>
+                    <div class="col-md-4 pr-5">
+                        <span class="table-name" id="counter"></span>
+                        <span class="counter" id="counter"></span>
+                        <span><button class="print"><i class="fas fa-print"></i></button></span>
+                        <span><button class="print"><i class="fas fa-plus-circle"></i></button></span>
+                    </div>
                 </div>
                 <div id="loader" aria-placeholder="loading..."></div>
                 <table id="table" cellspacing="2" cellpadding="2">
@@ -160,9 +162,10 @@
             const thead = $("thead")
             const tbody = $("tbody")
             const searchParent = $('#search-criteria')
+            const search_table = $('#search_table')
             thead.html('')
             tbody.html('')
-            searchParent.css('display', 'inline-block')
+            search_table.css('display', 'block')
             searchParent.html('')
 
             fetch(`/data/table?table=${value}`).then((response) => {

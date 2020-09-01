@@ -45,23 +45,11 @@
                             <option value="plot_farm_identification" id="plot">Plot Farm Identification</option>
                         </div>
                     </div>
-                    <select name="search" id="search-criteria">
-                        <option value="" selected>search_by (all)</option>
-                        <option id="clear-criteria" value="">clear</option>
-                    </select>
                     <div id="search_table">
+                        <select name="search" id="search-criteria"></select>
                         <input type="text" id="search_by_id" placeholder="Search table...">
                     </div>
-                    <div class="dropdown">
-                        <input class="myInput" onclick="show()" type="text" placeholder="Select Table..">
-                        <div id="myDropdown" class="dropdown-content">
-                            <option value="clear" id="clear">Clear</option>
-                            <option value="beneficiary_details" id="beneficiary-details">Beneficiary Details</option>
-                            <option value="boom_sprayers" id="boom-sprayers">Boom Sprayers</option>
-                            <option value="spouse_details" id="spouse-details">Spouse Details</option>
-                            <option value="plot_farm_identification" id="plot">Plot Farm Identification</option>
-                        </div>
-                    </div>
+                    <span class="table-name" id="counter"></span>
                     <span class="counter" id="counter"></span>
                     <span><button class="print"><i class="fas fa-print"></i></button></span>
                     <span><button class="print"><i class="fas fa-plus-circle"></i></button></span>
@@ -112,7 +100,7 @@
 
         document.querySelector('.myInput').addEventListener('keyup', filterSearch)
 
-        const searchData = () => {
+        const searchData = (criteria) => {
             input = document.querySelector('#search_by_id')
             filter = input.value.toUpperCase().trim()
             table = document.getElementById('table')
@@ -120,7 +108,7 @@
 
             let count = 0
             for(let i=0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName('td')[0]
+                td = tr[i].getElementsByTagName('td')[criteria]
                 if(td) {
                     txtValue = td.textContent || td.innerText
                     if(txtValue.toUpperCase().trim().indexOf(filter) > -1) {
@@ -135,8 +123,6 @@
 
             $('.counter').html(count).css('display', 'inline-block')
         }
-
-        document.querySelector('#search_by_id').addEventListener('keyup', searchData)
 
 
         const printData = () => {
@@ -173,9 +159,11 @@
             showSpinner('block')
             const thead = $("thead")
             const tbody = $("tbody")
+            const searchParent = $('#search-criteria')
             thead.html('')
             tbody.html('')
-
+            searchParent.css('display', 'inline-block')
+            searchParent.html('')
 
             fetch(`/data/table?table=${value}`).then((response) => {
                 response.json().then((table) => {
@@ -183,17 +171,12 @@
                     const headers = Object.keys(table[0])
 
                     let tr = ''
+                    let option = ''
                     let searchValue = 0
-                    document.querySelectorAll('#search-criteria > option').textContent = ''
                     for(let i = 0; i < headers.length; i++) {
-                        tr += `<th> ${headers[i]} </th>`
-                        const searchParent = document.querySelector('#search-criteria')
-                        const clearCriteria = document.querySelector('#clear-criteria')
-                        const option = document.createElement('option')
-                        option.value = searchValue + 1
-                        option.innerHTML = document.createTextNode(headers[i])
-                        option.className = headers[i]
-                        searchParent.insertBefore(search, clearCriteria)
+                        let header = headers[i]
+                        tr += `<th> ${header} </th>`
+                        option += `<option value="${searchValue+i}" class="new-option">search_by: ${header} </option>`
                     }
 
                     let rows = '<tr>'
@@ -212,7 +195,16 @@
 
                     thead.append('<tr>'+ tr + '</tr>')
                     tbody.append(rows)
+                    searchParent.append(option)
+
+                    document.querySelector('#search-criteria').addEventListener('click', (data) => {
+                        document.querySelector('#search_by_id').addEventListener('keyup', (e) => {
+                            searchData(data.target.value)
+                        })
+                    })
+
                     $('.counter').html(table.length).css('display', 'inline-block')
+                    $('.table-name').html(value).css('display', 'inline-block')
                     document.querySelector('.print').style.display = 'inline-block'
 
                 }).catch((error) => {

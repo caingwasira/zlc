@@ -61,7 +61,6 @@ section {
 
 
 #search_table {
-    width: 30%;
     margin-right: 10px;
     font-weight: bold;
     font-size: .8em;
@@ -69,8 +68,9 @@ section {
     color: #fff;
 }
 
-#search_by_id {
-    width: 100%;
+#search-criteria { display: none}
+
+#search_by_id, #search-criteria {
     padding: 3px;
     border: 1px solid #fff;
     border-radius: 3px;
@@ -87,6 +87,7 @@ background-color: #3290af;
 #counter {
     display: none;
     border-radius: 5px;
+    background-color: #67bad6;
     float: right;
     margin-left: 1em;
     padding: 3px;

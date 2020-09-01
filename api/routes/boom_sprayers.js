@@ -14,7 +14,7 @@ router.get('/data/table', async (req, res, next) => {
     const { table } = req.query
     let errors = [];
     const sql = `SELECT * FROM ${table} p INNER JOIN beneficiary_details b ON p.subdivision_id = b.subdivision_id`
-    const sql1 = `SELECT subdivision_id, surname, first_name, sex FROM ${table}`
+    const sql1 = `SELECT * FROM ${table}`
     const sql2 = `
     SELECT p.subdivision_id, p.farm_name, p.ward, bo.found_on_farm
      FROM ${table} p
@@ -24,7 +24,7 @@ router.get('/data/table', async (req, res, next) => {
     
     try { 
         const client = await pool.connect()
-        const tableData = await client.query(sql)
+        const tableData = await client.query(sql1)
         const tableRows = tableData.rows
         res.send(tableRows)
        

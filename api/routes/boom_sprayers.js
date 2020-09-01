@@ -13,7 +13,14 @@ router.get('/data', async (req, res) => {
 router.get('/data/table', async (req, res, next) => {
     const { table } = req.query
     let errors = [];
-    const sql = `SELECT * FROM ${table}`
+    const sql = `SELECT * FROM ${table} p INNER JOIN beneficiary_details b ON p.subdivision_id = b.subdivision_id`
+    const sql1 = `SELECT subdivision_id, surname, first_name, sex FROM ${table}`
+    const sql2 = `
+    SELECT p.subdivision_id, p.farm_name, p.ward, bo.found_on_farm
+     FROM ${table} p
+     JOIN boom_sprayers bo
+    ON (p.subdivision_id = bo.subdivision_id)
+    `
     
     try { 
         const client = await pool.connect()
@@ -25,6 +32,7 @@ router.get('/data/table', async (req, res, next) => {
     } 
     catch (error) {
         errors.push({ message: 'Error encountred while loading the data, try again'}, error.message);
+        console.log(error.message)
         if(errors.length > 0) {
             res.send({
                 table: errors,

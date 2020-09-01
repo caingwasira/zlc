@@ -86,11 +86,11 @@ background-color: #3290af;
 #counter {
     display: none;
     border-radius: 5px;
-    background-color: #67bad6;
+    background-color: #fff;
     float: right;
     margin-left: 1em;
     padding: 3px 5px;
-    color: #fff;
+    color: orange;
     font-weight: bold;
     font-size: small;
 }

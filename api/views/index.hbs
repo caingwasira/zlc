@@ -45,37 +45,34 @@
                             <option value="plot_farm_identification" id="plot">Plot Farm Identification</option>
                         </div>
                     </div>
+                    <select name="search" id="search-criteria">
+                        <option value="" selected>search_by (all)</option>
+                        <option id="clear-criteria" value="">clear</option>
+                    </select>
                     <div id="search_table">
                         <input type="text" id="search_by_id" placeholder="Search table...">
-                        <span class="counter" id="counter"></span>
-                        <span><button class="print"><i class="fas fa-print"></i></button></span>
-                        <span><button class="print"><i class="fas fa-plus-circle"></i></button></span>
                     </div>
+                    <div class="dropdown">
+                        <input class="myInput" onclick="show()" type="text" placeholder="Select Table..">
+                        <div id="myDropdown" class="dropdown-content">
+                            <option value="clear" id="clear">Clear</option>
+                            <option value="beneficiary_details" id="beneficiary-details">Beneficiary Details</option>
+                            <option value="boom_sprayers" id="boom-sprayers">Boom Sprayers</option>
+                            <option value="spouse_details" id="spouse-details">Spouse Details</option>
+                            <option value="plot_farm_identification" id="plot">Plot Farm Identification</option>
+                        </div>
+                    </div>
+                    <span class="counter" id="counter"></span>
+                    <span><button class="print"><i class="fas fa-print"></i></button></span>
+                    <span><button class="print"><i class="fas fa-plus-circle"></i></button></span>
                 </div>
                 <div id="loader" aria-placeholder="loading..."></div>
-                <table id="table">
+                <table id="table" cellspacing="2" cellpadding="2">
                     <thead>
                         
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>cain</td>
-                            <td>kundai</td>
-                            <td>tapiwa</td>
-                            <td>emily</td>
-                            <td>deon</td>
-                            <td>tashley</td>
-                            <td>billy</td>
-                        </tr>
-                        <tr>
-                            <td>ok</td>
-                            <td>picknpay</td>
-                            <td>choppies</td>
-                            <td>spar</td>
-                            <td>bonemarche</td>
-                            <td>n richards</td>
-                            <td>shoprite</td>
-                        </tr>
+                
                     </tbody>
                 </table>
             </div>
@@ -90,6 +87,7 @@
         const showSpinner = (display) => {
             const me = document.getElementById('loader')
             document.getElementById("loader").style.display = display;
+            document.querySelector('.myInput').value = ''
         }
 
         const filterSearch = () => {
@@ -109,36 +107,68 @@
         }
 
         document.querySelector('#myDropdown').addEventListener('click', (e) => {
-            showTable(e.target.value)
+            fetchData(e.target.value)
         })
+
         document.querySelector('.myInput').addEventListener('keyup', filterSearch)
 
-        const searchTable = () => {
+        const searchData = () => {
             input = document.querySelector('#search_by_id')
             filter = input.value.toUpperCase().trim()
             table = document.getElementById('table')
             tr = table.getElementsByTagName('tr')
+
+            let count = 0
             for(let i=0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName('td')[1]
+                td = tr[i].getElementsByTagName('td')[0]
                 if(td) {
                     txtValue = td.textContent || td.innerText
                     if(txtValue.toUpperCase().trim().indexOf(filter) > -1) {
-                        tr[i].style.display = 'block'
-                        td.classList.add('bg')
+                        tr[i].style.display = ''
+                        tr[i].classList.add('rows')
+                        count++
                     } else {
                         tr[i].style.display = 'none'
-                        td.classList.remove('bg')
                     }
-                } else {
-                    table.textContent = 'Content not available, select a table to search'
                 }
             }
-            
+
+            $('.counter').html(count).css('display', 'inline-block')
         }
 
-        document.querySelector('#search_by_id').addEventListener('keyup', searchTable)
+        document.querySelector('#search_by_id').addEventListener('keyup', searchData)
 
-        const showTable = value => {
+
+        const printData = () => {
+            const table = document.getElementById('table')
+            let htmlToPrint = `
+            <style type="text/css">
+            table {
+                color: #062F4F;
+                background-color: #969494;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            thead { border-bottom: 1px solid #062F4F}
+
+            tbody tr:nth-child(even) { background-color: #adadad}
+            tbody tr:nth-child(odd) { background-color: #969494}
+
+            th, td {
+                padding-right: 10px;
+            }
+            </style>`;
+            htmlToPrint += table.outerHTML
+            newWin = window.open("")
+            newWin.document.write(htmlToPrint)
+            newWin.print()
+            setTimeout(() => newWin.close(), 2000)
+        }
+
+        document.querySelector('.fa-print').addEventListener('click', printData)
+
+        const fetchData = value => {
             show()
             showSpinner('block')
             const thead = $("thead")
@@ -153,8 +183,17 @@
                     const headers = Object.keys(table[0])
 
                     let tr = ''
+                    let searchValue = 0
+                    document.querySelectorAll('#search-criteria > option').textContent = ''
                     for(let i = 0; i < headers.length; i++) {
                         tr += `<th> ${headers[i]} </th>`
+                        const searchParent = document.querySelector('#search-criteria')
+                        const clearCriteria = document.querySelector('#clear-criteria')
+                        const option = document.createElement('option')
+                        option.value = searchValue + 1
+                        option.innerHTML = document.createTextNode(headers[i])
+                        option.className = headers[i]
+                        searchParent.insertBefore(search, clearCriteria)
                     }
 
                     let rows = '<tr>'
@@ -174,6 +213,7 @@
                     thead.append('<tr>'+ tr + '</tr>')
                     tbody.append(rows)
                     $('.counter').html(table.length).css('display', 'inline-block')
+                    document.querySelector('.print').style.display = 'inline-block'
 
                 }).catch((error) => {
                     tbody.append(`<p> No data to display, try again... </p>`)

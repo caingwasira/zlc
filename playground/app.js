@@ -1,130 +1,123 @@
-// Class: Create a User
-class User {
-    constructor(name, email, role) {
-        const today = new Date()
-        this.name = name
-        this.email = email
-        this.role = role
-        this.id = Math.floor(Math.random() * 1037000) 
-        this.date = `${today.getDate()}-${today.getMonth()+1}-${today.getFullYear()} Time 
-        ${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`
-    } 
+// Book Class: Represents a Book
+class Book {
+    constructor(title, author, isbn) {
+        this.title = title,
+        this.author = author,
+        this.isbn = isbn
+    }
 }
 
-// Class: Represents a User
+// UI Class: Handle UI Tasks
 class UI {
-    static displayUsers() {
-        const users = Store.getUsers()
+    static displayBooks() {
+        const books = Store.getBooks()
 
-        users.forEach((user) => UI.addUser(user))
+        books.forEach((book) => UI.addBookToList(book))
     }
 
-    static addUser(user) {
-        const list = document.getElementById('user-list')
-        const tr = document.createElement('tr')
-        tr.innerHTML = `
-        <td> ${user.name} </td>
-        <td> ${user.email} </td>
-        <td> ${user.role} </td>
-        <td> ${user.id} </td>
-        <td> ${user.date} </td>
-        <td><i class="fas fa-trash-alt text-danger delete">X</i></td>
+    static addBookToList(book) {
+        const list = document.querySelector('#book-list')
+        const row = document.createElement('tr')
+        row.innerHTML = `
+        <td> ${book.title} </td>
+        <td> ${book.author} </td>
+        <td> ${book.isbn} </td>
+        <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
         `
-        list.appendChild(tr)
-    }
 
-    static deleteUser(user) {
-        if(user.classList.contains('delete')) user.parentElement.parentElement.style.display = 'none'
+        list.appendChild(row)
     }
 
     static clearFields() {
-        document.querySelector('#name').value = ''
-        document.querySelector('#email').value = ''
-        document.querySelector('#role').value = ''
+        document.querySelector('#title').value = ''
+        document.querySelector('#author').value = ''
+        document.querySelector('#isbn').value = ''
     }
 
-    static showAlerts(message, className) {
-        const container = document.querySelector('.container')
-        const form = document.querySelector('#users-form')
+    static deleteBook(book) {
+        if(book.classList.contains('delete')) {
+            const tr = book.parentElement.parentElement
+            tr.style.display = 'none'
+        }
+    }
+
+    static showAlert(message, className) {
         const div = document.createElement('div')
         div.className = `alert alert-${className}`
         div.appendChild(document.createTextNode(message))
-        container.insertBefore(div, form)
+        const container = document.querySelector('.container')
+        const form = document.querySelector('#book-form')
+        container.insertBefore(div,form)
 
-        setTimeout( () => div.style.display = 'none', 2000)
-    } 
+        setTimeout(() => document.querySelector('.alert').remove(), 3000)
+    }
 }
 
-// Class: Storage for all Users
+// Store Class: Handle Storage
 class Store {
-    static getUsers() {
-        let users
-        if(localStorage.getItem('users') === null) return users = []
-        users = JSON.parse(localStorage.getItem('users'))
-        return users
-    }
-
-    static addUser(user) {
-        const users = Store.getUsers()
-        users.push(user)
-
-        localStorage.setItem('users', JSON.stringify(users))
-    }
-
-    static removeUser(user) {
-        const users = Store.getUsers()
-
-        for(let i=0; i < users.length; i++) {
-            if(users[i].email === user) users.splice(i, 1)
+    static getBooks() {
+        let books
+        if(localStorage.getItem('books') === null) {
+            books = []
+        } else {
+            books = JSON.parse(localStorage.getItem('books'))
         }
+        return books
+    }
 
-        // users.forEach((myuser, index) => {
-        //     if(myuser.email == user) {
-        //         users.splice(index, 1)
-        //     }
-        // })
+    static addBook(book) {
+        const books = Store.getBooks()
+        books.push(book)
+        localStorage.setItem('books', JSON.stringify(books))
+    }
 
-        localStorage.setItem('users', JSON.stringify(users))
+    static removeBook(isbn) {
+        const books = Store.getBooks()
+        books.forEach((book, index) => {
+            if(book.isbn === isbn) books.splice(index, 1)
+        })
+
+        localStorage.setItem('books', JSON.stringify(books))
     }
 }
 
-// Event: Display a User
-document.addEventListener('DOMContentLoaded', UI.displayUsers())
+// Event: Display Books
+document.addEventListener('DOMContentLoaded', UI.displayBooks)
 
-// Event: Add a User
-document.querySelector('#users-form').addEventListener('submit', (e) => {
+// Event: Add a Book
+document.querySelector('#book-form').addEventListener('submit', (e) => {
     e.preventDefault()
-    const name = document.querySelector('#name').value
-    const email = document.querySelector('#email').value
-    const role = document.querySelector('#role').value
-    const list = document.querySelector('#user-list')
+    const title = document.querySelector('#title').value
+    const author = document.querySelector('#author').value
+    const isbn = document.querySelector('#isbn').value
+
+    const list = document.querySelector('#book-list')
     const tr = list.getElementsByTagName('tr')
 
-    if(tr) {
-        for(i=0; i < tr.length; i++) {
-            let txtValue = tr[i].getElementsByTagName('td')[1].textContent.trim().toUpperCase()
-            if(email.trim().toUpperCase() === txtValue) {
-                UI.showAlerts('Email already taken!', 'danger')
-                return
-            }
+    for(let i=0; i < tr.length; i++) {
+        let txtValue = tr[i].getElementsByTagName('td')[0].textContent.trim().toUpperCase()
+        if(title.trim().toUpperCase() === txtValue) {
+            UI.showAlert('Book Aready Exists!', 'danger')
+            return
         }
     }
 
-    if( name === '' || email === '' || role === '') {
-        UI.showAlerts('Please fill in the form!', 'danger')
-        return
-    }
+    if(!title || !author || !isbn) return UI.showAlert('Please fill in all fields', 'danger')
 
-    const user = new User(name, email, role)
-    UI.addUser(user)
+    const book = new Book(title, author, isbn)
+
+    UI.addBookToList(book)
+
+    Store.addBook(book)
+
+    UI.showAlert('Book Added!', 'success')
+
     UI.clearFields()
-    UI.showAlerts('User Added', 'success')
-    Store.addUser(user)
 })
 
-// Event: Remove a User
-document.querySelector('#user-list').addEventListener('click', (e) => {
-    const user = e.target.parentElement.parentElement.children[1].textContent 
-    Store.removeUser(user)
-    UI.deleteUser(e.target)
+//Event: Remove a Book
+document.querySelector('#book-list').addEventListener('click', (e) => {
+    UI.deleteBook(e.target)
+    Store.removeBook(e.target.parentElement.previousElementSibling.textContent)
+    UI.showAlert('Book Removed!', 'success')
 })

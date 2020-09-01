@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+}
+
+body { -webkit-print-color-adjust:exact }
+
 section {
     padding: 0 20px;
 }
@@ -55,7 +61,7 @@ section {
 
 
 #search_table {
-    width: 100%;
+    width: 30%;
     margin-right: 10px;
     font-weight: bold;
     font-size: .8em;
@@ -64,7 +70,7 @@ section {
 }
 
 #search_by_id {
-    width: 50%;
+    width: 100%;
     padding: 3px;
     border: 1px solid #fff;
     border-radius: 3px;
@@ -78,8 +84,6 @@ color: #fff;
 background-color: #3290af;
 }
 
-.bg { background-color: #e74;}
-
 #counter {
     display: none;
     border-radius: 5px;
@@ -89,10 +93,10 @@ background-color: #3290af;
     color: #fff;
     font-weight: bold;
     font-size: small;
-    border: 1px solid #67bad6;
 }
 
 .print {
+    display: none;
     background-color: #116c8a;
     float: right;
     border: none;
@@ -108,7 +112,7 @@ background-color: #3290af;
 
 table {
     display: block;
-    table-layout: fixed;
+    table-layout: auto;
     overflow-x: auto;
     white-space: nowrap;
     margin: 2rem 0;
@@ -121,40 +125,46 @@ thead {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 4;
+    color: #3a3939;
     background: #fff;
 }
 
 thead tr th {
     padding: 5px 30px 5px 0px;
-    color: #333;
+    color: #3a3939;
     font-size: small;
     font-weight: bold;
 }
 
 tbody tr:nth-child(odd) {
-    background-color: #062F4F;
-    color: #adadad;
-    width: 100%;
+    background-color: #adadad;
+    color: #062F4F;
+    width: auto;
 }
 
 tbody tr:nth-child(even) {
-    background-color: #adadad;
+    background-color: #969494;
     color: #062F4F;
-    width: 100%;
+    width: auto;
+}
+
+.rows {
+    border-bottom: 1px solid #fff;
+    border-right: none;
 }
 
 tbody tr:hover {
-    color: #116c8a;
-    border: .8px solid #116c8a;
+    background-color: #fff;
+    color: #3a3939;
 }
 
 tbody tr td {
-    font-size: .8em;
+    font-size: .7em;
     font-weight: 600;
     padding: 10px 5px;
-    border-right: .01em solid #fff;
-    min-width: 50px;
+    width: 30px;
+    overflow: hidden;
 }
 
 tbody p {

@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Red+Rose:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="https://kit.fontawesome.com/ed06971682.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/data.css">
     <title>Zimbabwe Land Commission</title>
@@ -35,8 +36,12 @@
         <div class="data-container container-fluid">
             <div class="row m-auto">
                 <div class="info">
-                    <div class="dropdown col-md-2">
-                        <input class="myInput" onclick="show()" type="text" placeholder="Select Table..">
+                    <div class="dropdown col-md-3">
+                        <input 
+                        class="myInput" 
+                        onclick="show()" 
+                        type="text" 
+                        placeholder="Select Table..">
                         <div id="myDropdown" class="dropdown-content">
                             <option value="clear" id="clear">Clear</option>
                             <option value="beneficiary_details" id="beneficiary-details">Beneficiary Details</option>
@@ -45,14 +50,44 @@
                             <option value="plot_farm_identification" id="plot">Plot Farm Identification</option>
                         </div>
                     </div>
-                    <div class="col-md-6" id="search_table">
-                        <select name="search" id="search-criteria"></select>
+                    <div class="col-md-9">
+                        <form class="container" id="form">
+                            <input type="text" id="select" value="SELECT" class="query" readonly>
+                            <input 
+                            type="text" 
+                            id="fields" 
+                            placeholder="Enter fields" 
+                            class="query"
+                            data-toggle="tooltip" 
+                            data-placement="top" 
+                            title="Type in any field name you want to select from a given table 
+                                   or type in * to select all fields/columns of a table.
+                                   If you don't know how to run queries use the Select Table input field on your left
+                                   or consult the ICT department">
+                            <input type="text" id="from" value="FROM" class="query" readonly>
+                            <input 
+                            type="text" 
+                            id="tablename" 
+                            placeholder="Table Name" 
+                            class="query"
+                            data-toggle="tooltip" 
+                            data-placement="top" 
+                            title="Type in the actual table name you want to 
+                                   select your columns/fields from. You can also select from a 
+                                   combination of tables using joins">
+                            <input type="submit" value="Run Query" class="query pr-5">
+                        </form>
+                    </div>
+                </div>
+                <div class="info" id="stats">
+                    <div class="col-md-6 pl-4" id="search_table">
+                        <select data-toggle="tooltip" data-placement="top" title="Search this table by any field in the dropdown" name="search" id="search-criteria"></select>
                         <input type="text" id="search_by_id" placeholder="Search table...">
                     </div>
-                    <div class="col-md-4 pr-5">
-                        <span class="table-name" id="counter"></span>
-                        <span class="counter" id="counter"></span>
-                        <span><button class="print"><i class="fas fa-print"></i></button></span>
+                    <div class="col-md-6 pr-5">
+                        <span data-toggle="tooltip" data-placement="top" title="Table Name" class="table-name" id="counter"></span>
+                        <span data-toggle="tooltip" data-placement="top" title="Number of Records" class="counter text-success" id="counter"></span>
+                        <span><button data-toggle="tooltip" data-placement="top" title="Print Table" class="print"><i class="fas fa-print"></i></button></span>
                         <span><button class="print"><i class="fas fa-plus-circle"></i></button></span>
                     </div>
                 </div>
@@ -70,6 +105,10 @@
     </section>
     <script>
 
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
         const show = () => {
             document.getElementById("myDropdown").classList.toggle("show");
         }
@@ -78,6 +117,8 @@
             const me = document.getElementById('loader')
             document.getElementById("loader").style.display = display;
             document.querySelector('.myInput').value = ''
+            document.querySelectorAll('.query')[1].value = ''
+            document.querySelectorAll('.query')[3].value = ''
         }
 
         const filterSearch = () => {
@@ -97,12 +138,20 @@
         }
 
         document.querySelector('#myDropdown').addEventListener('click', (e) => {
-            fetchData(e.target.value)
+            if(e.target.value === 'clear') {
+                show()
+                document.querySelector('#stats').style.display = 'none'
+                document.querySelector('table').classList.add('table')
+            } else {
+                fetchData(e.target.value)
+                document.querySelector('table').classList.remove('table')
+            }
         })
 
         document.querySelector('.myInput').addEventListener('keyup', filterSearch)
 
         const searchData = (criteria) => {
+            console.log(criteria)
             input = document.querySelector('#search_by_id')
             filter = input.value.toUpperCase().trim()
             table = document.getElementById('table')
@@ -169,17 +218,22 @@
             searchParent.html('')
 
             fetch(`/data/table?table=${value}`).then((response) => {
-                response.json().then((table) => {
+                response.json().then((info) => {
+
+                    localStorage.setItem('info', JSON.stringify(info))
+
+                    const table = JSON.parse(localStorage.getItem('info'))
+
                     showSpinner('none')
                     const headers = Object.keys(table[0])
 
                     let tr = ''
-                    let option = ''
+                    let option = '<option class="new-option">search_by:</option>'
                     let searchValue = 0
                     for(let i = 0; i < headers.length; i++) {
                         let header = headers[i]
                         tr += `<th> ${header} </th>`
-                        option += `<option value="${searchValue+i}" class="new-option">search_by: ${header} </option>`
+                        option += `<option value="${searchValue+i}" class="new-option">${header} </option>`
                     }
 
                     let rows = '<tr>'
@@ -209,6 +263,7 @@
                     $('.counter').html(table.length).css('display', 'inline-block')
                     $('.table-name').html(value).css('display', 'inline-block')
                     document.querySelector('.print').style.display = 'inline-block'
+                    document.querySelector('#stats').style.display = 'flex'
 
                 }).catch((error) => {
                     tbody.append(`<p> No data to display, try again... </p>`)
@@ -216,8 +271,96 @@
             })
         }
 
+
+        const queryData = (select, fields, from, tablename) => {
+            showSpinner('block')
+            const thead = $("thead")
+            const tbody = $("tbody")
+            const searchParent = $('#search-criteria')
+            const search_table = $('#search_table')
+            thead.html('')
+            tbody.html('')
+            search_table.css('display', 'block')
+            searchParent.html('')
+
+            fetch(`/data/query?select=${select}&fields=${fields}&from=${from}&table=${tablename}`).then((response) => {
+                response.json().then((info) => {
+                    localStorage.setItem('info', JSON.stringify(info))
+
+                    const table = JSON.parse(localStorage.getItem('info'))
+
+                    showSpinner('none')
+                    const headers = Object.keys(table[0])
+
+                    let tr = ''
+                    let option = '<option class="new-option">search_by:</option>'
+                    let searchValue = 0
+                    for(let i = 0; i < headers.length; i++) {
+                        let header = headers[i]
+                        tr += `<th> ${header} </th>`
+                        option += `<option value="${searchValue+i}" class="new-option">${header} </option>`
+                    }
+
+                    let rows = '<tr>'
+                    table.forEach((row) => {
+                        let data = ''
+                        for(let key in row) {
+                            if(row[key] === null) {
+                                data += `<td> </td>`
+                            } else {
+                                data += `<td> ${row[key]} </td>`
+                            }
+                            
+                        }
+                        rows += data + '</tr>'
+                    })
+
+                    thead.append('<tr>'+ tr + '</tr>')
+                    tbody.append(rows)
+                    searchParent.append(option)
+
+                    document.querySelector('#search-criteria').addEventListener('click', (data) => {
+                        document.querySelector('#search_by_id').addEventListener('keyup', (e) => {
+                            searchData(data.target.value)
+                        })
+                    })
+
+                    document.querySelector('#stats').style.display = 'flex'
+                    $('.counter').html(table.length).css('display', 'inline-block')
+                    $('.table-name').html('default').css('display', 'inline-block')
+                    document.querySelector('.print').style.display = 'inline-block'
+
+                }).catch((error) => {
+                    tbody.append(`<p> No data to display, try again... </p>`)
+                })
+            })
+        }
+
+        document.querySelector('#form').addEventListener('submit', (e) => {
+            e.preventDefault()
+            const select = document.querySelector('#select').value.trim()
+            const fields = document.querySelector('#fields').value.trim()
+            const from = document.querySelector('#from').value.trim()
+            const table = document.querySelector('#tablename').value.trim()
+
+            if(select === '' || fields === '' || from === '' || table === '') {
+                document.querySelector('#stats').style.display = 'none'
+                document.querySelector('table').textContent = 'Please fill in the form'
+            } else {
+                queryData(select, fields, from, table)
+                document.querySelector('table').classList.remove('table')
+            }
+
+            const formData = {
+                select,
+                fields,
+                from,
+                table
+            }
+        })
+
+
     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>

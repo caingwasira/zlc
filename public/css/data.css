@@ -75,13 +75,18 @@ section {
 .query:nth-child(3) { width: 10%;}
 .query:first-child { width: 10%;}
 .query:last-child { 
-    width: 12%; 
-    letter-spacing: normal; 
-    border: 1px solid #fff; 
+    width: 12%;
+    letter-spacing: normal;
+    background-color: #67bad6;
+    border-radius: 5px;
+    padding: 3px;
+    color: #ffffff;
+    border: 1px solid #ffffff; 
 }
 
 .query:last-child:hover {
     background-color:#db7d55;
+    border: 1px solid #fff;
     color: #fff;
 }
 
@@ -120,7 +125,6 @@ section {
 }
 
 .print {
-    display: none;
     background-color: #fff;
     float: right;
     margin-right: 1em;
@@ -215,6 +219,17 @@ tbody p {
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
   }
+
+  .spinners {
+    display: inline-block;
+    border-radius: 50%;
+    border: 3px solid #116c8a;
+    width: 10px;
+    height: 10px;
+    position: relative;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
   
   @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
@@ -225,3 +240,5 @@ tbody p {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+  

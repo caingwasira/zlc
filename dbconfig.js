@@ -1,6 +1,6 @@
+
 const pg = require('pg')
 const conn = 'postgresql://postgres:zlc2019@localhost:5432/master_database';
-
 
 const pool = new pg.Pool({
     connectionString: conn,

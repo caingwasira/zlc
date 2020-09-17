@@ -1,5 +1,5 @@
 const { Pool } = require('pg')
-const conn = 'postgressql://postgres:zlc2019@localhost:5432/master_database';
+const conn = 'postgressql://postgres:ict2077@localhost:5432/zlclimsdb';
 
 
 const pool = new Pool({

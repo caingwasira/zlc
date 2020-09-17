@@ -1,0 +1,142 @@
+[
+	{
+		"abbr": "WEG",
+		"name": "Westgate",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "BOD",
+		"name": "Borrowdale",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "MTH",
+		"name": "Mount Pleasant Heights",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "MOP",
+		"name": "Mount Pleasant",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "AVD",
+		"name": "Avondale",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "GRE",
+		"name": "GreenCroft",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "MAB",
+		"name": "Marlbrough",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "MAR",
+		"name": "Marboreign",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "DZI",
+		"name": "Dzivarasekwa",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "BEL",
+		"name": "Belgravia",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "BEV",
+		"name": "Belvedere",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "MSA",
+		"name": "Masasa",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "CHI",
+		"name": "Chitungwiza",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "ARD",
+		"name": "Area D",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "NBH",
+		"name": "New Bluffhill",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "TIN",
+		"name": "Tinwald",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "WRP",
+		"name": "Warren Park",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "MAN",
+		"name": "Mandara",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "GED",
+		"name": "Greendale",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "GUN",
+		"name": "Gunhill",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "NEW",
+		"name": "Newlands",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "GLE",
+		"name": "Glenlorne",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "AVE",
+		"name": "Avenues",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "MIL",
+		"name": "Milton Park",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "WOK",
+		"name": "Workington",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "KUW",
+		"name": "Kuwadzana",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "EAS",
+		"name": "Eastlea",
+		"capital": "Harare"
+	},
+	{
+		"abbr": "AVL",
+		"name": "Avonlea",
+		"capital": "Harare"
+	}
+]

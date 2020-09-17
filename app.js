@@ -3,6 +3,7 @@ const path = require('path')
 const hbs = require('hbs')
 const bodyParser = require('body-parser')
 const Data = require('./api/routes/boom_sprayers')
+const Users = require('./api/routes/users')
 const errorHandler = require('./api/middleware/errors')
 
 const app = express()
@@ -15,6 +16,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(Data)
+app.use(Users)
 app.use(errorHandler)
 
 

@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Jekyll v4.1.1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="https://kit.fontawesome.com/ed06971682.js" crossorigin="anonymous"></script>
+        <title> ZLC | signup </title>
+    </head>
+    <body class="bg-black">
+        {{>nav}}
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-4 mr-5 p-3 shadow-lg h-50">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted text-center">Sign In</span>
+                    </h4>
+                    <form class="form-signin" action="/data">
+                        <div username class="input-group mb-4">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text">@</span>
+                            </div>
+                            <input type="text" id="username" class="form-control" placeholder="Username" required>
+                            <small class="invalid" style="width: 100%;">Oops! wrong email</small>
+                        </div>
+                        <div login_pass class="input-group mb-4">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            </div>
+                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                            <small class="invalid" style="width: 100%;">Oops! wrong password</small>
+                        </div>
+                        <div class="checkbox mb-3">
+                            <label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button class="btn btn-lg btn-secondary btn-sm btn-block" type="submit">Sign in</button>
+                    </form>
+                </div>
+
+                <!-- Sign Up-->
+                <div class="col-md-7 p-3 shadow-lg">
+                    <h4 class="mb-3 text-muted">Sign Up</h4>
+                    <p class="text-center" id="message"></p>
+                    <form class="needs-validation">
+                        <div class="row">
+                            <div fullname class="col-md-6 mb-3">
+                                <input type="text" class="form-control" id="fullName" placeholder="Full Name" value="" required>
+                                <small class="invalid">
+                                Valid full name is required.
+                                </small>
+                            </div>
+                            <div email class="col-md-6 mb-3">
+                                <input type="email" class="form-control" id="email" placeholder="Email" value="" required>
+                                <small class="invalid">
+                                Valid email is required.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div role class="form-group">
+                                <select class="form-control role" id="sel1">
+                                    <option value="" selected disabled>Role</option>
+                                    <option value="technician">Technician</option>
+                                    <option value="assistant-manager">Assistant Manager</option>
+                                    <option value="manager">Manager</option>
+                                    <option value="general-manager">General Manager</option>
+                                    <option value="secretary">Secretary</option>
+                                    <option value="commissioner">Commissioner</option>
+                                    <option value="dc">Deputy Chairperson</option>
+                                    <option value="chairperson">Chairperson</option>
+                                </select>
+                                <small class="invalid" style="width: 100%;">
+                                Your role is required.
+                                </small>
+                            </div> 
+                        </div>
+
+                        <div class="mb-3">
+                            <div department class="form-group">
+                                <select class="form-control dept" id="sel1">
+                                    <option value="" selected disabled>Department</option>
+                                    <option value="ict">ICT</option>
+                                    <option value="land-audit">Land Audit</option>
+                                    <option value="legal">Legal</option>
+                                    <option value="hr">Human Resources</option>
+                                    <option value="finance">Finance</option>
+                                </select>
+                                <small class="invalid" style="width: 100%;">
+                                Your department is required.
+                                </small>
+                            </div> 
+                        </div>
+
+                        <div class="row">
+                            <div zlc_code class="col-md-6 mb-3">
+                                <input type="password" class="form-control" id="zlc_code" placeholder="Enter department code" value="" required>
+                                <small class="invalid">
+                                Valid code is required.
+                                </small>
+                            </div>
+                            <div mobile_number class="col-md-6 mb-3">
+                                <input type="number" class="form-control" id="mobile-number" placeholder="Mobile Number" value="" required>
+                                <small class="invalid">
+                                Valid mobile number is required.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div password class="col-md-6 mb-3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <input type="password" class="form-control" id="password" placeholder="Password" value="" required>
+                                    <small class="invalid" style="width: 100%;">
+                                      Valid password is required.
+                                    </small>
+                                </div>
+                            </div>
+                            <div confirm_pass class="col-md-6 mb-3">
+                                <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password" value="" required>
+                                <small class="invalid">
+                                Passwords do not match.
+                                </small>
+                            </div>
+                        </div>
+
+                        <hr class="mb-3">
+                        <button class="btn btn-secondary btn-block mb-2" type="submit">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr class="mb-4">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+        <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+
+
+            const validateInput = (e) => {
+                e.preventDefault()
+                const role = document.querySelector('.role')
+                const dept = document.querySelector('.dept')
+                if(role.value === '') {
+                    document.querySelector('div[role] > .invalid').classList.add('valid')
+                    return
+                }
+                if(dept.value === '') {
+                    document.querySelector('div[department] > .invalid').classList.add('valid')
+                    return
+                }
+
+                setInterval(() => {
+                    const message = document.querySelector('#message')
+                    console.log(message)
+                    message.classList.add('message')
+                    message.textContent = 'Success! You can now login'
+                    window.location.href = '/signup_home'
+                },5000)
+                const login = document.querySelector('#username')
+                login.setAttribute = ['autofocus']
+            }
+
+            document.querySelector('.needs-validation').addEventListener('submit', (e) => validateInput(e))
+
+            document.querySelector('#account-user').innerHTML = `
+            <i class="fas fa-sign-in-alt signin"></i>
+            <b>Sign In </b>
+            `
+            document.querySelector('#account-user').addEventListener('click', (e) => {
+                e.target.parentElement.classList.add('account-user-focus')
+                window.location.href = '/signup_home'
+            })
+
+        </script>
+    </body>
+</html>

@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="https://kit.fontawesome.com/ed06971682.js" crossorigin="anonymous"></script>
@@ -34,7 +33,7 @@
                             <option value="plot_farm_identification" id="plot">Plot Farm Identification</option>
                         </div>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-lg-9">
                         <form class="container" id="form">
                             <input type="text" id="select" value="SELECT" class="query" readonly>
                             <input 
@@ -53,12 +52,7 @@
                             type="text" 
                             id="tablename" 
                             placeholder="Enter table name" 
-                            class="query"
-                            data-toggle="tooltip" 
-                            data-placement="top" 
-                            title="Type in the actual table name you want to 
-                                   select your columns/fields from. You can also select from a 
-                                   combination of tables using joins">
+                            class="query">
                             <button type="submit" id="run" class="query">Run Query</button>
                         </form>
                     </div>
@@ -428,6 +422,19 @@
             const passcord = document.querySelector('#recipient-name').value.trim()
             if(passcord !== 'cain') return
             download()
+            console.log('Document printed')
+        })
+
+        //------------------ Sign out ------------------------------------------------------------\\
+        setTimeout(() => {
+            window.location.href = '/signup_home'
+        }, 3600000)
+
+        document.querySelector('#account-user').innerHTML = `
+        <button class="btn btn-outline-secondary btn-sm logout">Logout</button>
+        `
+        document.querySelector('.logout').addEventListener('click', () => {
+            window.location.href = '/signup_home'
         })
 
 

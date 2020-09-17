@@ -1,5 +1,5 @@
 const pg = require('pg')
-const conn = 'postx://postgres:zlc2019@localhost:5432/test';
+const conn = 'postgresql://postgres:zlc2019@localhost:5432/master_database';
 
 
 const pool = new pg.Pool({
@@ -10,7 +10,7 @@ const pool = new pg.Pool({
 
 pool.connect( (err, connection) => {
     if(err) {
-        console.log('Error occured'+ err)
+       return console.log('Error occured'+ err)
     }
     console.log("Connection passed!")
 })

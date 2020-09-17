@@ -95,7 +95,7 @@ section {
 }
 
 #search_table {
-    display: none;
+    display: block;
     margin-right: 10px;
     font-weight: bold;
     font-size: .8em;
@@ -109,6 +109,38 @@ section {
     border-radius: 3px;
     color: #2b2a2a;
     background-color: #fff;
+}
+
+.view-btn {
+    border: none;
+    border-radius: 5px;
+    padding: .1rem .3rem;
+}
+
+.view-btn:hover { border: 1px solid #fa520a;}
+
+.view-btn:nth-child(2) { 
+    background-color: #27abb4;
+    color: #fff;
+}
+
+.view-btn:nth-child(3) { 
+    background-color: #e6b30b;
+    color: #3a3939;
+}
+
+.view-default { width: auto }
+
+.view-light > td, th { background-color: #fff; color: #3a3939;border: 1px solid #e7e7e7; }
+
+.view-dark:nth-child(odd) {
+    background-color: #066388;
+    color: #fff;
+}
+
+.view-dark:nth-child(even) {
+    background-color: #fff;
+    color: #333;
 }
 
 #counter {
@@ -137,6 +169,12 @@ section {
 .print:hover {
     color: #fff;
     background-color: #67bad6;
+}
+
+@media(max-width: 1000px) {
+    .print, #counter, .view-btn {
+        margin-top: .2rem;
+    }
 }
 
 /*-----------------------TABLE------------------------------*/
@@ -205,7 +243,7 @@ tbody p {
     display: none;
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 55%;
     z-index: 1;
     width: 10px;
     height: 10px;

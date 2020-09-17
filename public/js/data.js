@@ -328,3 +328,25 @@ const changeView = (view, remove1, remove2) => {
 document.querySelector('#view-default').addEventListener('click', () => changeView('view-default', 'view-light', 'view-dark') )
 document.querySelector('#view-light').addEventListener('click', () => changeView('view-light', 'view-default', 'view-dark') )
 document.querySelector('#view-dark').addEventListener('click', () => changeView('view-dark', 'view-light', 'view-default') )
+
+
+//-------------------------------Load Table Names------------------------------------------\\
+
+const tableNames = () => {
+    fetch('/data/table_names')
+    .then( res => res.json())
+    .then( names => {
+        names.forEach(name => {
+            const list = document.querySelector('#myDropdown')
+            const clear = document.querySelector('#clear')
+            const option = document.createElement('option')
+            option.value = name.table_name
+            option.appendChild(document.createTextNode(name.table_name))
+            clear.parentNode.insertBefore(option, clear.nextSibling)
+        })
+    })
+    .catch( err => console.log(err))
+
+}
+
+document.addEventListener('loadeddata', tableNames())

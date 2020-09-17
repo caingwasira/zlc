@@ -11,10 +11,12 @@ body {
 
 /*--------------HEADER--------------------------------*/
 
-.header {
-    color: #006622;
+.head {
+    background: #ebebeb;
+    color: #333;
     font-weight: bold;
     font-size: 2vmin;
+    padding: 1rem;
 }
 
 /*--------------NAVIGATION- LAYOUT VIEW--------------------------------*/
@@ -105,6 +107,17 @@ body {
     }
 }
 
+#account-user:hover {
+    background-color: #ebebeb;
+    padding: .3rem;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.account-user-focus {
+    border: 1px solid #087591;
+}
 
 /*--------------HOME-----------------------------------------------*/
 
@@ -171,4 +184,35 @@ footer p.text {
 
 .techsuite {
     font-size: .7em;
+}
+
+/*------------------------------Sign Up------------------------------------------*/
+
+.container {
+    max-width: 960px;
+    }
+
+.lh-condensed { line-height: 1.25; }
+
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+    }
+}
+
+.invalid {
+    display: none;
+    color: #e74;
+}
+
+.valid {
+    display: block;
+}
+
+.message {
+    background-color: #99e499;
+    color: #fff;
+    padding: .5rem;
+    margin-bottom: .5rem;
 }

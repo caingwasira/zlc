@@ -62,20 +62,19 @@ section {
 
 .query {
     padding: 3px 5px;
-    width: 33%;
+    min-width: 55%;
     border-radius: 3px;
     font-size: .8em;
     font-weight: 600;
     letter-spacing: .5mm;
     color: #3a3939;
     border: 1px solid #67bad6;
-    color: #3a3939
 }
 
-.query:nth-child(3) { width: 10%;}
-.query:first-child { width: 10%;}
+.query:nth-child(3) { min-width: 10%;}
+.query:first-child { min-width: 10%;}
 .query:last-child { 
-    width: 12%;
+    min-width: 12%;
     letter-spacing: normal;
     background-color: #67bad6;
     border-radius: 5px;

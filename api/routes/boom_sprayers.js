@@ -1,10 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const pool = require('../../dbconfig')
+const auth = require('../middleware/auth')
 
 router.get('', (req, res) => {
     res.render('home')
 })
+
 router.get('/data', async (req, res) => {
     res.render('index')
 })

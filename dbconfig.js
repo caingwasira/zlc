@@ -1,8 +1,8 @@
-const { Pool } = require('pg')
-const conn = 'postgressql://postgres:zlc2019@localhost:5432/master_database';
+const pg = require('pg')
+const conn = 'postx://postgres:zlc2019@localhost:5432/test';
 
 
-const pool = new Pool({
+const pool = new pg.Pool({
     connectionString: conn,
     ssl: false,
     connectionTimeoutMillis: 5000

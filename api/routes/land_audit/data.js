@@ -1,12 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const pool = require('../../dbconfig')
-const auth = require('../middleware/auth')
-
-// Home View endpoint
-router.get('', (req, res) => {
-    res.render('home')
-})
+const pool = require('../../../dbconfig')
+const auth = require('../../middleware/auth')
 
 // Data View endpoint
 router.get('/data', async (req, res) => {

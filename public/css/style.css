@@ -216,3 +216,29 @@ footer p.text {
     padding: .5rem;
     margin-bottom: .5rem;
 }
+
+/*------------------------------About Us------------------------------------------*/
+
+.about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+    }
+
+    .container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+    }
+
+    .title {
+    color: grey;
+    }
+
+    @media screen and (max-width: 650px) {
+    .column {
+        width: 100%;
+        display: block;
+    }
+    }

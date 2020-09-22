@@ -11,11 +11,11 @@ sequelize.authenticate()
 
 const User = sequelize.define('user', {
     // Attributes
-    user_id: {
+    userID: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    full_name: { 
+    fullName: { 
         type: Sequelize.STRING,
         allowNull: false
     },
@@ -31,19 +31,30 @@ const User = sequelize.define('user', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    zlc_code: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
     mobile_number: {
         type: Sequelize.STRING,
         allowNull: false
     },
+
+    date: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+
     password: {
         type: Sequelize.STRING,
         allowNull: false
     }
 })
+
+User.sync().then(function (err) {     
+    if(err) {
+        console.log(err);
+    } 
+    else{ 
+        console.log('Item table created successfully');
+    } 
+});
 
 
 module.exports = User;

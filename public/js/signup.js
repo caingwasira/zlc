@@ -1,34 +1,131 @@
-const validateInput = (e) => {
+const validateInput = async (e) => {
     e.preventDefault()
-    const role = document.querySelector('.role')
-    const dept = document.querySelector('.dept')
-    if(role.value === '') {
-        document.querySelector('div[role] > .invalid').classList.add('valid')
-        return
-    }
-    if(dept.value === '') {
-        document.querySelector('div[department] > .invalid').classList.add('valid')
-        return
+
+    const form = e.target.parentElement
+    const values = form.querySelectorAll('.form-control')
+    document.querySelector('#message').textContent = ''
+
+    let errors = [];
+    values.forEach((input) => {
+        if(input.value.trim() === '') {
+            errors.push(input)
+            return input.nextElementSibling.classList.add('valid');
+        }
+
+        input.nextElementSibling.classList.remove('valid')
+    })
+
+
+    const name = form.querySelector('#fullName')
+    const zlc_code = form.querySelector('#zlc_code')
+    const email = form.querySelector('#email')
+    const role = form.querySelector('#role')
+    const dept = form.querySelector('#dept')
+    const mobile_number = form.querySelector('#mobile_number')
+    const password = form.querySelector('#password')
+    const confirm_password = form.querySelector('#confirm_password')
+
+    if(name.value.trim().length < 4 ) {
+        errors.push(name)
+        return name.nextElementSibling.classList.add('valid')
+    } else {
+        name.nextElementSibling.classList.remove('valid')
     }
 
-    setInterval(() => {
-        const message = document.querySelector('#message')
-        console.log(message)
-        message.classList.add('message')
-        message.textContent = 'Success! You can now login'
-        window.location.href = '/signup_home'
-    },5000)
-    const login = document.querySelector('#username')
-    login.setAttribute = ['autofocus']
+    if(mobile_number.value.trim().length !== 10 
+       || mobile_number.value.trim().substring(0,2) !== '07' 
+       || isNaN(parseInt(mobile_number.value))) {
+        errors.push(mobile_number)
+        return mobile_number.nextElementSibling.classList.add('valid')
+    } else {
+        mobile_number.nextElementSibling.classList.remove('valid')
+    }
+
+    if(password.value.length < 6 || password.value.includes('123456')) {
+        errors.push('Password incorrect')
+        password.nextElementSibling.innerHTML = `
+        Length should be greater than 6 characters
+        <br>
+        Don't include consecutive numbers or letters
+        `
+        return password.nextElementSibling.classList.add('valid')
+    } else {
+        password.nextElementSibling.innerHTML = ''
+        password.nextElementSibling.classList.remove('valid')
+    }
+
+    if(password.value.trim() !== confirm_password.value.trim()) {
+        errors.push('No Match')
+        return confirm_password.nextElementSibling.classList.add('valid')
+    } else {
+        confirm_password.nextElementSibling.classList.remove('valid')
+    }
+    
+
+    if(errors.length > 0) return false
+
+    const data = {
+        fullName: name.value,
+        email: email.value,
+        role: role.value,
+        department: dept.value,
+        zlc_code: zlc_code.value,
+        mobile_number: mobile_number.value,
+        password: password.value
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: '/signup',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function(result) {
+            console.log(result)
+
+            if(result.status === 200) {
+                const message = document.querySelector('#message')
+                message.classList.add('message')
+                message.textContent = result.message
+                message.style.backgroundColor = result.background
+
+                document.querySelector('#username').focus()
+                clearFields()
+            }
+            const message = document.querySelector('#message')
+            message.classList.add('message')
+            message.textContent = result.message
+            message.style.backgroundColor = result.background
+            clearFields()
+
+            setTimeout(() => window.location.href = '/users/login', 6000)
+            
+        },
+        error: function( jqXHR, exception) {
+
+            console.log(exception)
+            const msg = 'Ooops! error on our side, try back later'
+            if(exception) {
+                const message = document.querySelector('#message')
+                message.classList.add('message')
+                message.textContent = msg
+                message.style.backgroundColor = '#e74'
+                clearFields()  
+            }
+            
+        }
+    })
+}
+
+const clearFields = () => {
+
+    document.querySelector('#fullName').value = ''
+    document.querySelector('#zlc_code').value = ''
+    document.querySelector('#email').value = ''
+    document.querySelector('#role').value = ''
+    document.querySelector('#dept').value = ''
+    document.querySelector('#mobile_number').value = ''
+    document.querySelector('#password').value = ''
+    document.querySelector('#confirm_password').value = ''
 }
 
 document.querySelector('.needs-validation').addEventListener('submit', (e) => validateInput(e))
-
-document.querySelector('#account-user').innerHTML = `
-<i class="fas fa-sign-in-alt signin"></i>
-<b>Sign In </b>
-`
-document.querySelector('#account-user').addEventListener('click', (e) => {
-    e.target.parentElement.classList.add('account-user-focus')
-    window.location.href = '/signup_home'
-})

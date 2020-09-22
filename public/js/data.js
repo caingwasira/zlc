@@ -163,6 +163,7 @@ const fetchData = value => {
 
         }).catch((error) => {
             tbody.append(`<p> No data to display, try again... </p>`)
+            document.querySelector('#stats').style.display = ''
         })
     })
 }
@@ -231,6 +232,7 @@ const queryData = (select, fields, from, tablename) => {
 
         }).catch((error) => {
             tbody.append(`<p> No data to display, try again... </p>`)
+            document.querySelector('#stats').style.display = ''
         })
     })
 }
@@ -303,14 +305,14 @@ document.querySelector('#download').addEventListener('click', (e) => {
 
 //------------------ Sign out ------------------------------------------------------------\\
 setTimeout(() => {
-    window.location.href = '/signup_home'
-}, 3600000)
+    window.location.href = '/users/login'
+}, 300000)
 
 document.querySelector('#account-user').innerHTML = `
 <button class="btn btn-outline-secondary btn-sm logout">Logout</button>
 `
 document.querySelector('.logout').addEventListener('click', () => {
-    window.location.href = '/signup_home'
+    window.location.href = '/users/login'
 })
 
 

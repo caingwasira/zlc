@@ -306,7 +306,7 @@ document.querySelector('#download').addEventListener('click', (e) => {
 //------------------ Sign out ------------------------------------------------------------\\
 setTimeout(() => {
     window.location.href = '/users/login'
-}, 300000)
+}, 60000)
 
 document.querySelector('#account-user').innerHTML = `
 <button class="btn btn-outline-secondary btn-sm logout">Logout</button>

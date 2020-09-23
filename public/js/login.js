@@ -4,7 +4,8 @@ const validateSignin = (e) => {
     const code = form.querySelector('#code').value.trim()
     const password = form.querySelector('#inputPassword').value.trim()
     const inputs = form.querySelectorAll('.form-control')
-
+    const stringID = form.querySelector('#id').value.trim()
+    const id = parseInt(stringID)
     
     let errors = [];
     inputs.forEach((input) => {
@@ -19,6 +20,7 @@ const validateSignin = (e) => {
     if(errors.length > 0) return false
 
     const data = {
+        id,
         code,
         password
     }
@@ -29,11 +31,22 @@ const validateSignin = (e) => {
         contentType: 'application/json',
         data: JSON.stringify(data),
         success: function(result) {
-            console.log(result)
-            if(result === 'success') window.location.href = '/data'
+            if(result[0] === 'Success') window.location.href = '/data'
+            if(result[0] === 'Fail') {
+                inputs.forEach((input) => {
+                    input.nextElementSibling.classList.add('valid');
+                    input.nextElementSibling.textContent = 'Wrong credentials!'
+                })
+            }
         },
         error: function(error) {
-            console.log('Error, try back later')
+            console.log(error)
+            if(error) {
+                inputs.forEach((input) => {
+                    input.nextElementSibling.classList.add('valid');
+                    input.nextElementSibling.textContent = error
+                })
+            }
         }
     })
 }

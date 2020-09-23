@@ -1,12 +1,19 @@
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize('postgres://postgres:zlc2019@localhost:5432/master_database')
+const config = require('../../config').dev
+const sequelize = new Sequelize(`postgres://${config.user}:${config.secret}@${config.ip_address}:${config.port}/${config.db_name}`,
+ {
+    logging: false,
+    define: {
+        timestamps: false
+    }
+})
 
 sequelize.authenticate()
 .then( () => {
-    console.log('Connection has been established successfully')
+    console.log('Connected! => sequelize')
 })
 .catch( err => {
-    console.log('Unable to connect to the database')
+    console.log('Not connected! => sequelize')
 })
 
 const User = sequelize.define('user', {

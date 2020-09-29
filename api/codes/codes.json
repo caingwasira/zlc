@@ -1,7 +1,7 @@
 [
     {
         "dept": "Legal",
-        "code": "LEG-ZLC-XYZ"
+        "code": "LEG"
     },
 
     {
@@ -21,6 +21,6 @@
 
     {
         "dept": "ICT",
-        "code": "ICT-ZLC-XUD"
+        "code": "ICT"
     }
 ]

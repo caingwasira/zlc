@@ -3,6 +3,7 @@ const fs = require('fs').promises
 const router = express.Router()
 const User = require('../../models/user')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 const { json } = require('body-parser')
 
 router.post('/signup', async (req, res, next) => {
@@ -21,7 +22,7 @@ router.post('/signup', async (req, res, next) => {
 
         const match = await codes.filter( dept => zlc_code === dept.code )
 
-        const user = await User.findAll({ attributes: ['email', 'fullName', 'department'] })
+        const user = await User.findAll({ attributes: ['email', 'fullName', 'department', 'userID'] })
 
         const limit = user.filter( user => user.dataValues.department === department)
 
@@ -44,7 +45,6 @@ router.post('/signup', async (req, res, next) => {
         }
 
         if(errors.length > 0) {
-            console.log(errors, errors.length)
             return res.send({
                 message: errors,
                 background: '#e74'
@@ -78,32 +78,43 @@ router.post('/signup', async (req, res, next) => {
 
 router.post('/login', async (req, res, next) => {
     const { id, code, password } = req.body
+    
     try {
 
-        let decision = []
         const jsonCodes = await fs.readFile('./api/codes/codes.json', 'utf8')
      
         const codes = await JSON.parse(jsonCodes)
 
         const match = await codes.filter( dept => dept.code === code)
 
-        const user = await User.findAll({ attributes: ['password', 'userID'] })
+        const users = await User.findAll()
 
-        user.forEach( user => {
-            const matchPass = bcrypt.compareSync(password, user.dataValues.password );
+        const user = users.filter( user => user.dataValues.userID === id )
 
+        if(user.length !== 0 ) {
 
-            if(user.dataValues.userID === id && match.length > 0 && matchPass) {
-                decision.push('Success')
-            } else {
-                decision.push('Fail')
-            }
-        })
+            const matchPass = await bcrypt.compareSync(password, user[0].dataValues.password )
 
-        if(decision.length > 0) res.send(decision)
+            if(match.length > 0 && matchPass) {
+
+                const token = jwt.sign({user}, 'zlc', { expiresIn: '1500000'})
+    
+                return res.json({
+                    code: 200,
+                    token: token
+                })
+    
+            } 
+        } else {
+    
+            return res.json(401)
+        }
+
+        
     } 
     catch (error) {
         res.send(error.message)
+        console.log(error)
     }
 })
 

@@ -306,15 +306,11 @@ document.querySelector('#download').addEventListener('click', (e) => {
 //------------------ Sign out ------------------------------------------------------------\\
 setTimeout(() => {
     window.location.href = '/users/login'
-}, 60000)
+}, 1800000)
 
 document.querySelector('#account-user').innerHTML = `
-<button class="btn btn-outline-secondary btn-sm logout">Logout</button>
+<a href="/logout" class="btn btn-outline-secondary btn-sm logout">Logout</a>
 `
-document.querySelector('.logout').addEventListener('click', () => {
-    window.location.href = '/users/login'
-})
-
 
 //------------------ Table View ------------------------------------------------------------\\
 

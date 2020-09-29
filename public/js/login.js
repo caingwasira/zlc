@@ -31,8 +31,13 @@ const validateSignin = (e) => {
         contentType: 'application/json',
         data: JSON.stringify(data),
         success: function(result) {
-            if(result[0] === 'Success') window.location.href = '/data'
-            if(result[0] === 'Fail') {
+
+            if(result.code === 200) {
+                localStorage.setItem('token', JSON.stringify(result.token))
+                window.location.href = '/data'
+            }
+
+            if(result === 401) {
                 inputs.forEach((input) => {
                     input.nextElementSibling.classList.add('valid');
                     input.nextElementSibling.textContent = 'Wrong credentials!'
@@ -40,16 +45,24 @@ const validateSignin = (e) => {
             }
         },
         error: function(error) {
-            console.log(error)
             if(error) {
                 inputs.forEach((input) => {
                     input.nextElementSibling.classList.add('valid');
-                    input.nextElementSibling.textContent = error
+                    input.nextElementSibling.textContent = 'Error on our side, try back later'
                 })
             }
         }
     })
+
+    fetch(`/data?token=${JSON.parse(localStorage.getItem('token'))}`)
+    .then( res => res.json())
 }
+
+const sentToken = (token) => {
+    fetch(`/data?token=${token}`)
+    .then( res => res.json())
+}
+
 
 const clearFields = () => {
 
@@ -65,3 +78,4 @@ const clearFields = () => {
 
 
 document.querySelector('.form-signin').addEventListener('submit', (e) => validateSignin(e))
+//document.addEventListener('DOMContentLoaded', sentToken(JSON.parse(localStorage.getItem('token'))))

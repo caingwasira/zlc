@@ -2,10 +2,23 @@ const express = require('express')
 const router = express.Router()
 const pool = require('../../../dbconfig')
 const auth = require('../../middleware/auth')
+const jwt = require('jsonwebtoken')
+const User = require('../../models/user')
 
-// Data View endpoint
-router.get('/data', async (req, res) => {
+// Data View Endpoint
+router.get('/data', auth.authenticate, async (req, res) => {
     res.render('index')
+})
+
+//Logout
+router.get('/logout', auth.authenticate, async (req, res) => {
+
+    try {
+        res.redirect('/users/login')
+
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 // Data Fetch Endpoint for SQL Queries Executed from the Data View Endpoint

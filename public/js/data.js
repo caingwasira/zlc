@@ -312,6 +312,12 @@ document.querySelector('#account-user').innerHTML = `
 <a href="/logout" class="btn btn-outline-secondary btn-sm logout">Logout</a>
 `
 
+document.querySelector('#account-user').addEventListener('click', (e) => {
+    localStorage.removeItem('token')
+})
+
+//window.onclose = localStorage.removeItem('token')
+
 //------------------ Table View ------------------------------------------------------------\\
 
 const changeView = (view, remove1, remove2) => {

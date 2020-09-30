@@ -6,12 +6,12 @@ const jwt = require('jsonwebtoken')
 const User = require('../../models/user')
 
 // Data View Endpoint
-router.get('/data', auth.authenticate, async (req, res) => {
+router.get('/data', async (req, res) => {
     res.render('index')
 })
 
 //Logout
-router.get('/logout', auth.authenticate, async (req, res) => {
+router.get('/logout', async (req, res) => {
 
     try {
         res.redirect('/users/login')

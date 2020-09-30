@@ -34,7 +34,10 @@ const validateSignin = (e) => {
 
             if(result.code === 200) {
                 localStorage.setItem('token', JSON.stringify(result.token))
-                window.location.href = '/data'
+
+                const token = JSON.parse(localStorage.getItem('token'))
+
+                if(!token) window.location.href = '/data'
             }
 
             if(result === 401) {
@@ -76,6 +79,14 @@ const clearFields = () => {
     document.querySelector('#confirm_password').value = ''
 }
 
+const authenticateToken = () => {
+    const token = localStorage.getItem('token')
+
+    fetch('/data').then( res => {
+        if(!token) window.location.href = '/users/login'
+    })
+}
+
 
 document.querySelector('.form-signin').addEventListener('submit', (e) => validateSignin(e))
-//document.addEventListener('DOMContentLoaded', sentToken(JSON.parse(localStorage.getItem('token'))))
+document.onload.authenticateToken()

@@ -25,14 +25,14 @@ section {
 .dropdown {
     position: relative;
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 3px;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f6f6f6;
-    min-width: 100%;
+    min-width: 90%;
     overflow: auto;
     border: 1px solid #ddd;
     z-index: 10;
@@ -56,7 +56,8 @@ section {
     border-radius: 3px;
     font-size: .8em;
     border: 1px solid #67bad6;
-    color: #3a3939
+    color: #3a3939;
+    width: 100%;
 }
 
 

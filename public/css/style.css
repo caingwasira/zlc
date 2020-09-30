@@ -1,7 +1,7 @@
 body {
     font-family: 'Lato', sans-serif;
     margin: 0;
-    padding: 0 5px;
+    padding: 0;
 
     display: flex;
     flex-direction: column;
@@ -11,10 +11,12 @@ body {
 
 /*--------------HEADER--------------------------------*/
 
-.header {
-    color: #006622;
+.head {
+    background: #ebebeb;
+    color: #333;
     font-weight: bold;
     font-size: 2vmin;
+    padding: 1rem;
 }
 
 /*--------------NAVIGATION- LAYOUT VIEW--------------------------------*/
@@ -24,41 +26,28 @@ body {
 }
 
 .mynav li a {
-    color: #006622;
+    color: #fff;
     font-size: 2vmin;
-    font-weight: bold;
+    font-weight: 400;
 }
 
 .mynav li a:hover {
-    color: #69ca89;
+    color: #ccc;
 }
 
-.fa-bars {
-    color: #006622;
-    float: right;
-}
-
-.fa {
-    color: #006622;
-    float: right;
-    padding: 5px;
-    font-size: 16px;
-}
-
-.fa:hover {
-    color: #6cd38f;
-    border-radius: 10px;
+.current-link {
+    border-bottom: 4px solid #fff;
 }
 
 .contact-btn {
-    color: #006622 !important;
+    color: #15a8a1 !important;
     background-color: #fff !important;
-    border: .02em solid #006622;
+    border: .02em solid #15a8a1;
 }
 
 .contact-btn:hover, .learnmore-btn:hover  {
     color: #fff !important;
-    background-color: #006622 !important;
+    background-color: #15a8a1 !important;
 }
 
 @media(max-width: 1000px) {
@@ -67,16 +56,6 @@ body {
         width: auto;
         padding: 0 5em 0 0;
         text-align: center;
-    }
-
-    .social-links {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-    }
-
-    .social-items {
-        padding-left: 4em;
     }
 
     .welcome_content {
@@ -105,38 +84,70 @@ body {
     }
 }
 
+#account-user:hover {
+    background-color: #ebebeb;
+    padding: .3rem;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.account-user-focus {
+    border: 1px solid #087591;
+}
 
 /*--------------HOME-----------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
 
 .home {
     flex-grow: 1;
 }
 
 .main-content {
-    background-image: url('../images/home.jpg');
+    font-family: 'Raleway', sans-serif;
+    height: 80vh;
+    background: #333 url('/images/black.png') no-repeat center center / cover;
     background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 8rem;
 }
 
-@media screen and (max-width: 1000px) {
+p { margin: 0 4rem;}
 
-    .col-lg-3 {
-        margin-left: 3em;
-    }
+p.typewriter {
+    font-size: 2.3rem;
+    font-weight: lighter;
+    color: #ccc;
+}
 
-    #email, #subscribe {
-        width: 60%;
-    }
+p.moto {
+    color: #aaa;
+    font-size: 1.3rem;
+}
 
+.txt-type > .text {
+    padding: 0 .3rem;
+    color: #e2e2e2;
+    border-right: .08rem solid #fff;
+}
+
+
+.post {
+    background-color: #f8f8f8;
 }
 
 
 /*--------------FOOTER-----------------------------------------------*/
 
+footer {
+    background-color: #e4e4e4;
+}
+
 footer p.header {
-    color: #024b1a;
+    color: #1eb4b4;
     font-size: small
 }
 
@@ -147,28 +158,84 @@ footer p.text {
 }
 
 .flinks {
-    color: #006622;
+    color: #1eb4b4;
     font-size: smaller;
 }
 
 .flinks:hover {
     text-decoration: none;
-    color: #54b875;
+    color: #1eb4b4;
 }
 
 
 #subscribe {
     width: 100% !important; 
     padding: 5px !important;
-    color: #006622 !important;
-    border: .5px solid #006622 !important;
+    color:#1eb4b4 !important;
+    border: .5px solid #1eb4b4 !important;
 }
 
 #subscribe:hover {
-    background-color: #006622 !important;
+    background-color: #1eb4b4 !important;
     color: #fff !important;
 }
 
 .techsuite {
     font-size: .7em;
 }
+
+/*------------------------------Sign Up------------------------------------------*/
+
+.container {
+    max-width: 960px;
+    }
+
+.lh-condensed { line-height: 1.25; }
+
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+    }
+}
+
+.invalid {
+    display: none;
+}
+
+.valid {
+    display: block;
+    color: #e74;
+}
+
+.message {
+    color: #333;
+    padding: .5rem;
+    margin-bottom: .5rem;
+}
+
+/*------------------------------About Us------------------------------------------*/
+
+.about-section {
+    padding: 50px;
+    text-align: center;
+    background: #333 url('/images/black.png') center center no-repeat;
+    color: white;
+    }
+
+    .container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+    }
+
+    .title {
+    color: grey;
+    }
+
+    @media screen and (max-width: 650px) {
+    .column {
+        width: 100%;
+        display: block;
+    }
+    }

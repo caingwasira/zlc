@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/ed06971682.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/data.css">
+    <link rel="icon" href="/images/logo.jpg">
     <title>Zimbabwe Land Commission</title>
     <style>
         .error-404 {
@@ -24,7 +25,16 @@
 <body>
     <section class="error-404">
         <p> {{title}}</p>
+        <p>{{rows}}</p>
     </section>
     {{>footer}}
+
+    <script>
+        $("[href]").each(function() {
+            if (this.href == window.location.href) {
+                $(this).addClass("current-link");
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,26 @@
+[
+    {
+        "dept": "Legal",
+        "code": "LEG"
+    },
+
+    {
+        "dept": "Land Audit",
+        "code": "LEA-ZLC-DDG"
+    },
+
+    {
+        "dept": "Communications",
+        "code": "COM-ZLC-HHA"
+    },
+
+    {
+        "dept": "Human Resources",
+        "code": "HUR-ZLC-XDP"
+    },
+
+    {
+        "dept": "ICT",
+        "code": "ICT"
+    }
+]

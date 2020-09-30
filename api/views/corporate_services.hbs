@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="https://kit.fontawesome.com/ed06971682.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="/images/logo.jpg">
+    <title>ZLC | Corporate Services</title>
+</head>
+<body>
+    {{>nav}}
+
+    <div class="container my-5">
+        <div class="row products">
+            <div class="container col-lg-2">
+                <button class="btn btn-primary btn-sm product1">Peanuts</button>
+                <small class="views peanuts"></small>
+            </div>
+            <div class="container col-lg-2">
+                <button class="btn btn-secondary btn-sm product1">Tomatoes</button>
+                <small class="views tomatoes"></small>
+            </div>
+            <div class="container col-lg-2">
+                <button class="btn btn-info btn-sm product1">Mushroom</button>
+                <small class="views mushroom"></small>
+            </div>
+            <div class="container col-lg-2">
+                <button class="btn btn-dark btn-sm product1">Potatoes</button>
+                <small class="views potatoes"></small>
+            </div>
+            <div class="container col-lg-2">
+                <button class="btn btn-light btn-sm product1">Peas</button>
+                <small class="views peas"></small>
+            </div>
+            <div class="container col-lg-2">
+                <button class="btn btn-warning btn-sm product1">Beans</button>
+                <small class="views beans"></small>
+            </div>
+        </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+
+        class Click {
+            constructor(e, inc) {
+                this.e = e
+                this.count(e)
+                this.inc = inc
+            }
+
+            count(e) {
+                if(e.target.classList.contains('btn')) {
+                    this.inc++
+                    e.target.nextElementSibling.textContent = this.inc
+
+                    const product = {
+                        name: e.target.textContent,
+                        views: this.counter
+                    }
+
+                    let products  = []
+                    products.push(product)
+
+                    localStorage.setItem('products', JSON.stringify(products))                                                                                                                                                                                                                                                                                                                                                                                                       
+
+                    console.log(JSON.parse(localStorage.getItem('products')))
+                }
+            }
+        }
+
+        document.querySelector('.products').addEventListener('click', (e) => {
+            new Click(e, 0)
+        })
+
+        let inc = 0
+
+        function counter(e) {
+                
+                if(e.target.classList.contains('btn')) {
+                    inc++
+                    e.target.nextElementSibling.textContent = inc
+
+                    const product = {
+                        name: e.target.textContent,
+                        views: this.counter
+                    }
+
+                    let products  = []
+                    products.push(product)
+
+                    localStorage.setItem('products', JSON.stringify(products))                                                                                                                                                                                                                                                                                                                                                                                                       
+
+                    console.log(JSON.parse(localStorage.getItem('products')))
+                }
+        }
+
+
+        $("[href]").each(function() {
+            if (this.href == window.location.href) {
+                $(this).addClass("current-link");
+            }
+        });
+
+    </script>
+</body>
+</html>

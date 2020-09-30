@@ -6,33 +6,311 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Red+Rose:wght@300&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="https://kit.fontawesome.com/ed06971682.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="/images/logo.jpg">
     <title>Zimbabwe Land Commission</title>
 </head>
-<body onbeforeunload="showSpinner('block')">
-    {{>header}}
+<body>
     {{>nav}}
 
-    <div class="home">
-      <section class="container-fluid main-content pt-5 mb-5 d-flex justify-content-center">
-        <div class="row mb-5">
-            <div class="col-md-5 mb-5">
-              <div id="loader" aria-placeholder="loading..."></div>
+    <section class="home">
+      <div class="container-fluid main-content">
+        <p class="typewriter">
+          Zimbabwe Land Commission:
+          <span 
+          class="txt-type" 
+          data-words='["The Centre Of Excellence", "We Ensure Transparency", "We Ensure Accountability", "We Ensure Fairness", "We Value Integrity", "We Value Equity"]'
+          data-wait="3000">
+          </span>
+        </p>
+        <p class="moto">A Centre of Excellence in Equitable and Sustainable Land Administration and Management</p>
+      </div>
+
+      <div class="container my-5">
+        <div class="row">
+          <div class="col-lg-7 px-auto py-5">
+            <h4 class="text-center bg-info text-light p-2 mb-4">Introduction</h4>
+            <div class="py-0">
+              <video src="/videos/intro.mp4" controls width="100%"></video>
+              <p class="title text-center my-1">Chairperson</p>
             </div>
+            <hr class="my-5">
+          </div>
+
+          <div class="col-lg-5 p-5">
+            <h4 class="text-center bg-info p-2 text-light mb-4">Latest Posts</h4>
+            <div class="post mb-5 py-3">
+              <div class="text-center">
+                <h5 class="title">2020 Annual Report Now Available</h5>
+                <p><b>Posted </b>18/09/2020</p>
+                <p>The report was generated based on the last two periodic land audits, mainly known as
+                  Phase I and Phase II, which were carried out last year 2019... 
+                </p>
+                <button class="btn btn-secondary btn-sm bg-secondary">Read More...</button>
+              </div>
+            </div>
+
+            <div class="post mb-5 py-3">
+              <div class="text-center">
+                <h5 class="title"> Land Audit Phase III</h5>
+                <p><b>Posted </b>18/09/2020</p>
+                <p>The report was generated based on the last two periodic land audits, mainly known as
+                  Phase I and Phase II, which were carried out last year 2019... 
+                </p>
+                <button class="btn btn-secondary btn-sm bg-secondary">Read More...</button>
+              </div>
+            </div>
+
+            <div class="post mb-5 py-3">
+              <div class="text-center">
+                <h5 class="title">Attachees Wanted: Legal and ICT</h5>
+                <p><b>Posted </b>18/09/2020</p>
+                <p>The report was generated based on the last two periodic land audits, mainly known as
+                  Phase I and Phase II, which were carried out last year 2019... 
+                </p>
+                <button class="btn btn-secondary btn-sm bg-secondary">APPLY</button>
+              </div>
+            </div>
+
+            <div class="post mb-5 py-3">
+              <div class="text-center">
+                <h5 class="title"> Assistant Manager Wanted: Finance</h5>
+                <p><b>Posted </b>18/09/2020</p>
+                <p>The report was generated based on the last two periodic land audits, mainly known as
+                  Phase I and Phase II, which were carried out last year 2019... 
+                </p>
+                <button class="btn btn-secondary btn-sm bg-secondary">APPLY</button>
+              </div>
+            </div>
+
+          </div>
+
         </div>
-      </section>
-    </div>
+      </div>
+
+      <div class="container my-5">
+        <h2 class="text-center p-2 bg-info text-light my-5">What We Offer</h2>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="text-center text-muted">
+              <i class="fas fa-balance-scale h1 text-info my-2"></i>
+              <p><b class="title">LEGAL AND GOVERNANCE</b></p>
+              <p class="px-auto">
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Land Dispute Resolution
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Policy and Regulations Formulation
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Litigation
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Legal Advice
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Legislative Reviews
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  99-year lease and tenure systems reviews
+                </span> <br>
+              </p>
+            </div>
+            <hr class="m-5">
+          </div>
+          
+          <div class="col-lg-4">
+            <div class="text-center text-muted">
+              <i class="fas fa-tractor h1 text-info my-2"></i>
+              <p><b class="title">LAND AUDIT AND ICT</b></p>
+              <p class="px-auto">
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Periodic Land Audits
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Farm Inspections
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Land Information Management
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  99-year lease Recommandations and Other Land Tenure Systems
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Land Use, Allocations, Alienations, Compensations and Acquisitions Recommandations
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Gender Mainstream
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Environmental Management and Protection
+                </span> <br>
+              </p>
+            </div>
+            <hr class="m-5">
+          </div>
+
+          <div class="col-lg-4">
+            <div class="text-center text-muted">
+              <i class="fas fa-book-open h1 text-info my-2"></i>
+              <p><b class="title">INTERNAL AUDIT</b></p>
+              <p class="px-auto">
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Auditing and Financial Advisory
+                </span> <br>
+              </p>
+            </div>
+            <hr class="m-5">
+          </div>
+
+        </div>
+
+        <div class="row mt-1">
+          <div class="col-lg-4">
+            <div class="text-center text-muted">
+              <i class="fas fa-bullhorn h1 text-info my-2"></i>
+              <p><b class="title">COMMUNICATIONS</b></p>
+              <p class="px-auto">
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Events Management
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Media Monitoring and Management
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Press Statements
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Exhibitions
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Events Management
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Publications
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Outreach Programs
+                </span> <br>
+              </p>
+            </div>
+            <hr class="m-5">
+          </div>
+          
+          <div class="col-lg-4">
+            <div class="text-center text-muted">
+              <i class="fab fa-cuttlefish h1 text-info my-2"></i>
+              <p><b class="title">CORPORATE SERVICES</b></p>
+              <p class="px-auto">
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Provide Secretariat Services
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Documentation of Commission Decisions
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Organising Interviews for Senior Management
+                </span> <br>
+              </p>
+            </div>
+            <hr class="m-5">
+          </div>
+
+          <div class="col-lg-4">
+            <div class="text-center text-muted">
+              <i class="fas fa-coins h1 text-info my-2"></i>
+              <p><b class="title">FINANCE, ADMINISTRATION AND HUMAN RESOURCES</b></p>
+              <p class="px-auto">
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Financial Management
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Human Resources Management and Training
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Records and Information Management
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Performance Monitoring and Evaluation
+                </span> <br>
+                <span>
+                  <small><i class="fas fa-dot-circle "></i></small>
+                  Procurement
+                </span> <br>
+              </p>
+            </div>
+            <hr class="m-5">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <h3 class="text-center text-light bg-info p-2">
+              <i class="far fa-smile"></i>
+              What's Your Recommendation?
+            </h3>
+            <form id="recommend">
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="email">
+              </div>
+              <div class="form-group">
+                <textarea 
+                name="" 
+                id="" 
+                cols="30" 
+                rows="10" 
+                class="form-control" 
+                placeholder="Let's hear what you have to say about us!"></textarea>
+              </div>
+              <input type="submit" class="btn btn-outline-info btn-block" value="Submit">
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
     
     {{>footer}}
     <script>
-      const showSpinner = (display) => {
-            document.getElementById("loader").style.display = display;
-        }
+        $("[href]").each(function() {
+            if (this.href == window.location.href) {
+                $(this).addClass("current-link");
+            }
+        });
     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="/js/home.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>

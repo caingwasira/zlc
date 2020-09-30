@@ -1,8 +1,10 @@
-const { Pool } = require('pg')
-const conn = 'postgressql://postgres:zlc2019@localhost:5432/master_database';
 
+const pg = require('pg')
+const config = require('./config').dev
+const conn = `
+postgresql://${config.user}:${config.secret}@${config.ip_address}:${config.port}/${config.db_name}`;
 
-const pool = new Pool({
+const pool = new pg.Pool({
     connectionString: conn,
     ssl: false,
     connectionTimeoutMillis: 5000
@@ -10,9 +12,9 @@ const pool = new Pool({
 
 pool.connect( (err, connection) => {
     if(err) {
-        console.log('Error occured'+ err)
+       return console.log('Not connected! => db')
     }
-    console.log("Connection passed!")
+    console.log("Connected! => db")
 })
 
 module.exports = pool;

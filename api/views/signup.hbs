@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="https://kit.fontawesome.com/ed06971682.js" crossorigin="anonymous"></script>
+        <link rel="icon" href="/images/logo.jpg">
+        <title> ZLC | Sign Up </title>
+    </head>
+    <body class="bg-black">
+        {{>nav}}
+        <div class="container mt-5">
+            <div class="row">
+                <!-- Sign Up-->
+                <div class="col-md-7 mx-auto p-3 shadow-lg">
+                    <h4 class="mb-3 text-center text-muted">Sign Up</h4>
+                    <p class="text-center" id="message"></p>
+                    <form class="needs-validation" id="signup">
+                        <div class="row">
+                            <div fullname class="col-md-6 mb-3">
+                                <input type="text" class="form-control" id="fullName" placeholder="Full Name">
+                                <small class="invalid">
+                                Valid full name is required.
+                                </small>
+                            </div>
+                            <div email class="col-md-6 mb-3">
+                                <input type="email" class="form-control" id="email" placeholder="Email">
+                                <small class="invalid">
+                                Valid email is required.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div role class="form-group">
+                                <select class="form-control role" id="role">
+                                    <option value="" selected disabled>Role</option>
+                                    <option value="technician">Technician</option>
+                                    <option value="assistant-manager">Assistant Manager</option>
+                                    <option value="manager">Manager</option>
+                                    <option value="general-manager">General Manager</option>
+                                    <option value="secretary">Secretary</option>
+                                    <option value="commissioner">Commissioner</option>
+                                    <option value="dc">Deputy Chairperson</option>
+                                    <option value="chairperson">Chairperson</option>
+                                </select>
+                                <small class="invalid" style="width: 100%;">
+                                Your role is required.
+                                </small>
+                            </div> 
+                        </div>
+
+                        <div class="mb-3">
+                            <div department class="form-group">
+                                <select class="form-control dept" id="dept">
+                                    <option value="" selected disabled>Department</option>
+                                    <option value="ict">ICT</option>
+                                    <option value="land-audit">Land Audit</option>
+                                    <option value="legal">Legal</option>
+                                    <option value="hr">Human Resources</option>
+                                    <option value="finance">Finance</option>
+                                </select>
+                                <small class="invalid" style="width: 100%;">
+                                Your department is required.
+                                </small>
+                            </div> 
+                        </div>
+
+                        <div class="row">
+                            <div zlc_code class="col-md-6 mb-3">
+                                <input type="password" class="form-control" id="zlc_code" placeholder="Enter department code">
+                                <small class="invalid">
+                                Valid code is required.
+                                </small>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" id="mobile_number" placeholder="Mobile Number   07...">
+                                <small class="invalid">
+                                Valid mobile number is required.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div password class="col-md-6 mb-3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <input type="password" class="form-control" id="password" placeholder="Password">
+                                    <small class="invalid" style="width: 100%;">
+                                      Valid password is required.
+                                    </small>
+                                </div>
+                            </div>
+                            <div confirm_pass class="col-md-6 mb-3">
+                                <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password">
+                                <small class="invalid">
+                                Passwords do not match.
+                                </small>
+                            </div>
+                        </div>
+
+                        <hr class="mb-3">
+                        <button class="btn btn-secondary btn-block mb-2" type="submit">Register</button>
+                        <p class="text-center"><small>You can sign in <a href="/users/login">here</a></small></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr class="mb-4">
+        <script>
+            $("[href]").each(function() {
+                if (this.href == window.location.href) {
+                    $(this).addClass("current-link");
+                }
+            });
+        </script>
+        <script src="/js/signup.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    </body>
+</html>

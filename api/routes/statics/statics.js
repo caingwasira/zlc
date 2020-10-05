@@ -46,15 +46,4 @@ router.get('/ict', (req, res) => {
     res.render('ict')
 })
 
-// Sign Up View Endpoint
-router.get('/users/signup_home', async (req, res) => {
-    res.render('signup')
-})
-
-// Sign Up View Endpoint
-router.get('/users/login', async (req, res) => {
-    res.render('login')
-})
-
-
 module.exports = router;

@@ -6,19 +6,27 @@ const jwt = require('jsonwebtoken')
 const User = require('../../models/user')
 
 // Data View Endpoint
-router.get('/data', async (req, res) => {
-    res.render('index')
+router.get('/data',auth.redirectlogin, async (req, res) => {
+
+    const user = await User.findOne({ where: { userID: req.session.userId }})
+
+    if(user !== null) {
+        res.render('index', {
+            name: user.dataValues.fullName
+        })
+    }
 })
 
 //Logout
-router.get('/logout', async (req, res) => {
+router.post('/logout', auth.redirectlogin, (req, res) => {
+    req.session.destroy( err => {
+        if(err) {
+            return res.redirect('/data')
+        }
 
-    try {
+        res.clearCookie(SESS_NAME)
         res.redirect('/users/login')
-
-    } catch (error) {
-        console.log(error)
-    }
+    })
 })
 
 // Data Fetch Endpoint for SQL Queries Executed from the Data View Endpoint

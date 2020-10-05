@@ -3,10 +3,15 @@ const fs = require('fs').promises
 const router = express.Router()
 const User = require('../../models/user')
 const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const auth = require('../../middleware/auth')
 const { json } = require('body-parser')
 
-router.post('/signup', async (req, res, next) => {
+// Sign Up View Endpoint
+router.get('/users/signup_home',auth.redirectDashboard, async (req, res) => {
+    res.render('signup')
+})
+
+router.post('/signup', auth.redirectDashboard, async (req, res, next) => {
     try {
         const { fullName, email, role, department, zlc_code, mobile_number, password} = req.body
 
@@ -76,7 +81,12 @@ router.post('/signup', async (req, res, next) => {
 })
 
 
-router.post('/login', async (req, res, next) => {
+// Sign In View Endpoint
+router.get('/users/login', auth.redirectDashboard, async (req, res) => {
+    res.render('login')
+})
+
+router.post('/users/login', auth.redirectDashboard, async (req, res) => {
     const { id, code, password } = req.body
     
     try {
@@ -87,33 +97,27 @@ router.post('/login', async (req, res, next) => {
 
         const match = await codes.filter( dept => dept.code === code)
 
-        const users = await User.findAll()
+        const user = await User.findOne({ where: { userID: id }})
 
-        const user = users.filter( user => user.dataValues.userID === id )
+        if(user !== null && match.length > 0) {
+            const passMatched = await bcrypt.compare(password, user.dataValues.password)
 
-        if(user.length !== 0 ) {
+            if(passMatched && match[0].code.startsWith(user.dataValues.department.substring(0, 3).toUpperCase())) {
+                req.session.userId = user.dataValues.userID
 
-            const matchPass = await bcrypt.compareSync(password, user[0].dataValues.password )
+                return res.redirect('/data')
 
-            if(match.length > 0 && matchPass) {
+            } else {
+                return res.redirect('/users/login')
+            }
 
-                const token = jwt.sign({user}, 'zlc', { expiresIn: '1500000'})
-    
-                return res.json({
-                    code: 200,
-                    token: token
-                })
-    
-            } 
         } else {
-    
-            return res.json(401)
+            return res.redirect('/users/login')
         }
 
         
     } 
     catch (error) {
-        res.send(error.message)
         console.log(error)
     }
 })

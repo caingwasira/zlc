@@ -26,21 +26,13 @@ section {
 .dropdown {
     position: relative;
     display: inline-block;
-<<<<<<< HEAD
-    margin-right: 3px;
-=======
->>>>>>> refs/remotes/origin/master
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f6f6f6;
-<<<<<<< HEAD
-    min-width: 90%;
-=======
     width: 100%;
->>>>>>> refs/remotes/origin/master
     overflow: auto;
     border: 1px solid #ddd;
     z-index: 10;

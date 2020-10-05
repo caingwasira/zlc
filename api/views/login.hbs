@@ -17,14 +17,14 @@
             <div class="col-sm-4 mx-auto my-5 p-3 shadow-lg h-50">
                 <h4 class="text-center mb-3">
                     <span class="text-muted">Login</span>
-                    <p class="text-center my-2"><small id="message"></small></p>
+                    <p class="text-center my-2"><small id="message">{{message}}</small></p>
                 </h4>
-                <form class="form-signin">
+                <form class="form-signin" method="post" action="/users/login">
                     <div username class="input-group mb-4">
                         <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-lock"></i></span>
                         </div>
-                        <input type="text" id="id" class="form-control" placeholder="ID: get your id from ict">
+                        <input type="text" name="id" id="id" class="form-control" placeholder="ID: get your id from ict">
                         <small class="invalid" style="width: 100%;">Oops! fill in the ID</small>
                     </div>
 
@@ -32,7 +32,7 @@
                         <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-lock"></i></span>
                         </div>
-                        <input type="password" id="code" class="form-control" placeholder="Enter department code">
+                        <input type="password" name="code" id="code" class="form-control" placeholder="Enter department code">
                         <small class="invalid" style="width: 100%;">Oops! fill in the code</small>
                     </div>
 
@@ -40,7 +40,7 @@
                         <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-lock"></i></span>
                         </div>
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Password">
+                        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password">
                         <small class="invalid" style="width: 100%;">Oops! fill in the password</small>
                     </div>
                     <button class="btn btn-lg btn-info btn-sm btn-block mb-2" type="submit">Confirm Identity</button>

@@ -36,18 +36,18 @@ body {
 }
 
 .current-link {
-    border-bottom: 4px solid #fff;
+    border-bottom: 2px solid #fff;
 }
 
 .contact-btn {
-    color: #15a8a1 !important;
+    color: #2ed87b !important;
     background-color: #fff !important;
-    border: .02em solid #15a8a1;
+    border: .02em solid#2ed87b;
 }
 
-.contact-btn:hover, .learnmore-btn:hover  {
+.contact-btn:hover {
     color: #fff !important;
-    background-color: #15a8a1 !important;
+    background-color:#2ed87b !important;
 }
 
 @media(max-width: 1000px) {

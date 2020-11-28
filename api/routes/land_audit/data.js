@@ -11,20 +11,21 @@ router.get('/data',auth.redirectlogin, async (req, res) => {
     const user = await User.findOne({ where: { userID: req.session.userId }})
 
     if(user !== null) {
+        const name = user.dataValues.fullName.split(" ")
         res.render('index', {
-            name: user.dataValues.fullName
+            name: name[1]
         })
     }
 })
 
 //Logout
-router.post('/logout', auth.redirectlogin, (req, res) => {
+router.get('/logout', auth.redirectlogin, (req, res) => {
+
+    res.status(200).clearCookie('sid')
     req.session.destroy( err => {
         if(err) {
             return res.redirect('/data')
         }
-
-        res.clearCookie(SESS_NAME)
         res.redirect('/users/login')
     })
 })

@@ -306,17 +306,11 @@ document.querySelector('#download').addEventListener('click', (e) => {
 //------------------ Sign out ------------------------------------------------------------\\
 setTimeout(() => {
     window.location.href = '/users/login'
-}, 65000)
+}, 1000*60*10)
 
 document.querySelector('#account-user').innerHTML = `
-<a href="/logout" class="btn btn-outline-secondary btn-sm logout">Logout</a>
+<a href="/logout" class="btn btn-secondary btn-sm logout">Logout</a>
 `
-
-document.querySelector('#account-user').addEventListener('click', (e) => {
-    localStorage.removeItem('token')
-})
-
-//window.onclose = localStorage.removeItem('token')
 
 //------------------ Table View ------------------------------------------------------------\\
 
@@ -339,7 +333,12 @@ document.querySelector('#view-dark').addEventListener('click', () => changeView(
 const tableNames = () => {
     fetch('/data/table_names')
     .then( res => res.json())
-    .then( names => {
+    .then( tableNames => {
+        const names = tableNames.filter( nam => {
+            if(nam.table_name !== 'users' && nam.table_name !== 'user') {
+                return nam
+            }
+        })
         names.forEach(name => {
             const list = document.querySelector('#myDropdown')
             const clear = document.querySelector('#clear')
@@ -354,3 +353,25 @@ const tableNames = () => {
 }
 
 document.addEventListener('loadeddata', tableNames())
+
+
+//-------------------------------Geolocation of farms------------------------------------------\\
+
+function showLocation() {
+    const rows = document.querySelectorAll('tr')
+    const table_name = document.querySelector('.table-name').textContent
+
+    console.log(table_name)
+
+    if(table_name === 'plot_farm_identification') {
+        rows.forEach( row => {
+            row.addEventListener('click', e => {
+                const x_coordinate = row[6]
+                const y_coordinate = row[7]
+                console.log(x_coordinate, y_coordinate)
+            })
+        })
+    }
+}
+
+document.querySelector('tbody').addEventListener('click', showLocation)

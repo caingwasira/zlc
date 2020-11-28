@@ -97,6 +97,8 @@ router.post('/users/login', auth.redirectDashboard, async (req, res) => {
 
         const match = await codes.filter( dept => dept.code === code)
 
+        if(isNaN(id)) return res.redirect('/users/login') 
+
         const user = await User.findOne({ where: { userID: id }})
 
         if(user !== null && match.length > 0) {

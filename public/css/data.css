@@ -113,12 +113,13 @@ section {
 }
 
 .view-btn {
-    border: none;
     border-radius: 5px;
     padding: .1rem .3rem;
+    border: 0;
+    outline: none;
 }
 
-.view-btn:hover { border: 1px solid #fff;}
+.view-btn:hover { border: 1px solid #fff;outline: none;}
 
 .view-btn:nth-child(2) { 
     background-color: #27abb4;

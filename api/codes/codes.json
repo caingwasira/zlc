@@ -1,26 +1,30 @@
 [
     {
         "dept": "Legal",
-        "code": "LEG"
+        "code": "LEG-ZLC-2020"
     },
 
     {
         "dept": "Land Audit",
-        "code": "LEA-ZLC-DDG"
+        "code": "LEA-ZLC-2020"
     },
 
     {
         "dept": "Communications",
-        "code": "COM-ZLC-HHA"
+        "code": "COM-ZLC-2020"
     },
 
     {
         "dept": "Human Resources",
-        "code": "HUR-ZLC-XDP"
+        "code": "HUR-ZLC-2020"
     },
 
     {
         "dept": "ICT",
-        "code": "ICT"
+        "code": "ICT-ZLC-2020"
+    },
+    {
+        "dept": "Finance",
+        "code": "FIN-ZLC-2020"
     }
 ]

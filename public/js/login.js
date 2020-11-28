@@ -19,6 +19,14 @@ const validateSignin = (e) => {
         e.preventDefault()
         return false
     }
+
+    fetch('/users/login')
+    .then( res => res.json())
+    .then( data => {
+        if(data === 12000) {
+            console.log('Login attempt failed!')
+        }
+    })
 }
 
 const clearFields = () => {

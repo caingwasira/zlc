@@ -10,7 +10,7 @@ const session = require('express-session')
 
 const app = express()
 
-const ONE_HOUR = 1000*60*10
+const ONE_HOUR = 1000*60*5
 
 const {
     SESS_NAME = 'sid',

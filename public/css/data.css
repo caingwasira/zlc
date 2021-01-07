@@ -135,15 +135,7 @@ section {
 
 .view-light > td, th { background-color: #fff; color: #3a3939;border: 1px solid #e7e7e7; }
 
-.view-dark:nth-child(odd) {
-    background-color: #066388;
-    color: #fff;
-}
-
-.view-dark:nth-child(even) {
-    background-color: #fff;
-    color: #333;
-}
+.view-dark > td, th { background-color: #fff; color: #4d4c4c; border: 1px solid #e7e7e7; }
 
 #counter {
     display: none;
@@ -212,14 +204,14 @@ thead tr th {
 }
 
 tbody tr:nth-child(odd) {
-    background-color: #d8dadb;
-    color: #4d4c4c;
+    background-color: #e1e2e2;
+    color: #333;
     width: auto;
 }
 
 tbody tr:nth-child(even) {
     background-color: #f1f2f3;
-    color: #4d4c4c;
+    color: #333;
     width: auto;
 }
 
@@ -231,7 +223,7 @@ tbody tr:nth-child(even) {
 tbody tr td {
     font-size: .7em;
     font-weight: 500;
-    padding: 10px 5px;
+    padding: 7px 10px;
     width: 30px;
     overflow: hidden;
 }

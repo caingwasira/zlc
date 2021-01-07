@@ -366,9 +366,8 @@ function showLocation() {
     if(table_name === 'plot_farm_identification') {
         rows.forEach( row => {
             row.addEventListener('click', e => {
-                const x_coordinate = row[6]
-                const y_coordinate = row[7]
-                console.log(x_coordinate, y_coordinate)
+                console.log(typeof row)
+                console.log(row)
             })
         })
     }

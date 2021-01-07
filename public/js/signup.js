@@ -87,12 +87,12 @@ const validateInput = async (e) => {
                 message.textContent = result.message
                 message.style.backgroundColor = result.background
                 clearFields()
-                setTimeout(() => window.location.href = '/users/login', 6000)
+                setTimeout(() => alert('You can now login, check your email to get your Login ID'), 3000)
             } else {
                 const message = document.querySelector('#message')
                 message.classList.add('message')
-                message.textContent = result.message
-                message.style.backgroundColor = result.background
+                message.textContent = 'An error occured, try back later'
+                message.style.backgroundColor = '#e74'
                 clearFields()
 
                 setInterval(() => message.style.display = 'none', 8000)

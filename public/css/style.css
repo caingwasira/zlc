@@ -93,7 +93,7 @@ body {
 
 .main-content {
     font-family: 'Raleway', sans-serif;
-    height: 70vh;
+    height: 60vh;
     background: #333 url('/images/about.gif') no-repeat center center / cover;
     background-attachment: fixed;
     display: flex;
@@ -112,10 +112,11 @@ p.typewriter {
 }
 
 .typewriter-txt {
-    border: 1px solid #c56c31;
+    background-color: #fff;
     border-radius: 5px;
-    font-size: 2rem;
-    padding: 5px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 5px 10px;
     color: #c56c31;
 }
 
@@ -148,12 +149,23 @@ a.services {
     text-decoration: none;
     list-style: none;
     opacity: .9;
-    color: #0d2f3fe3
+    color: #0d2f3fe3;
+    font-weight: bold;
+}
+
+a i .fas {
+    font-size: larger;
+    font-weight: bold;
 }
 
 a.services:hover {
     color: #c56c31;
     text-decoration: none;
+}
+
+div.col-lg-2:hover { 
+    border: 1px solid #046286;
+    border-radius: 5px;
 }
 
 
@@ -199,9 +211,15 @@ li { list-style: none;}
 
 /*------------------------------Sign Up------------------------------------------*/
 
-.container {
+.signup {
     max-width: 960px;
-    }
+    background: #333 url('/images/login2.jpg') no-repeat center center / cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+    
 
 .lh-condensed { line-height: 1.25; }
 
@@ -225,6 +243,16 @@ li { list-style: none;}
     color: #333;
     padding: .5rem;
     margin-bottom: .5rem;
+}
+
+
+
+.login {
+    background: #333 url('/images/login2.jpg') no-repeat center center / cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /*------------------------------About Us------------------------------------------*/

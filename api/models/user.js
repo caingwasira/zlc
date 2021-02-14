@@ -1,6 +1,10 @@
 const Sequelize = require('sequelize')
 const config = require('../../config').dev
-const sequelize = new Sequelize(`postgres://${config.user}:${config.secret}@${config.ip_address}:${config.port}/${config.db_name}`,
+const conn = `
+postgresql://${config.user}:${config.secret}@${config.ip_address}:${config.port}/${config.db_name}`
+
+const sequelize = new Sequelize(
+    conn,
  {
     logging: false,
     define: {
@@ -10,10 +14,10 @@ const sequelize = new Sequelize(`postgres://${config.user}:${config.secret}@${co
 
 sequelize.authenticate()
 .then( () => {
-    console.log('Connected! => sequelize')
+    console.log('ON')
 })
 .catch( err => {
-    console.log('Not connected! => sequelize')
+    console.log('OFF')
 })
 
 const User = sequelize.define('user', {

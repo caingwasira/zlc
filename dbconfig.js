@@ -12,9 +12,9 @@ const pool = new pg.Pool({
 
 pool.connect( (err, connection) => {
     if(err) {
-       return console.log('Not connected! => db')
+       return console.log('OFF')
     }
-    console.log("Connected! => db")
+    console.log("ON")
 })
 
 module.exports = pool;

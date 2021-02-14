@@ -89,12 +89,13 @@ body {
 
 .home {
     flex-grow: 1;
+    background-color: #ccc;
 }
 
 .main-content {
     font-family: 'Raleway', sans-serif;
     height: 60vh;
-    background: #333 url('/images/about.gif') no-repeat center center / cover;
+    background: #333 url('/images/home3.jpg') no-repeat center center / cover;
     background-attachment: fixed;
     display: flex;
     flex-direction: column;
@@ -107,29 +108,30 @@ body {
 p { margin: 0 4rem;}
 
 p.typewriter {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: lighter;
 }
 
 .typewriter-txt {
-    background-color: #fff;
+    background-color: #ccc;
     border-radius: 5px;
-    font-size: 1.4rem;
-    font-weight: bold;
+    font-size: 1.2rem;
+    font-weight: 500;
     padding: 5px 10px;
-    color: #c56c31;
+    color: #0d2f3fe3;
 }
 
-p.moto {
+p.moto, .moto small {
     width: 70%;
-    color: #faf6f6;
-    font-size: 1.2rem;
+    color: #ccc;
+    font-size: medium;
+    font-weight: 600;
 }
 
 .txt-type > .text {
     padding: 0 .3rem;
-    color: #e2e2e2;
-    border-right: .08rem solid #fff;
+    color: #ccc;
+    border-right: .08rem solid #c56c31;
 }
 
 
@@ -159,7 +161,7 @@ a i .fas {
 }
 
 a.services:hover {
-    color: #c56c31;
+    color: #fff;
     text-decoration: none;
 }
 

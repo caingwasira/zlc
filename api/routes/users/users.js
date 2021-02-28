@@ -8,9 +8,23 @@ const { json } = require('body-parser')
 const nodemailer = require('nodemailer')
 const xoauth2 = require('xoauth2')
 
+
+// Welcome users
+
+router.get('/users/welcome', auth.redirectlogin, async (req, res) => {
+    const user = await User.findOne({ where: { userID: req.session.userId }})
+
+    res.render('welcome', {
+        name: user.dataValues.fullName
+    });
+})
+
 // Sign Up View Endpoint
-router.get('/users/signup_home', auth.redirectDashboard, async (req, res) => {
-    res.render('signup')
+router.get('/users/sys-admin', auth.redirectlogin, async (req, res) => {
+    const user = await User.findOne({ where: { userID: req.session.userId }})
+
+    if(user.dataValues.email === 'admin@orelle.com') return res.render('signup')
+    res.redirect('/users/welcome')
 })
 
 router.post('/signup', auth.redirectDashboard, async (req, res, next) => {
@@ -33,104 +47,42 @@ router.post('/signup', auth.redirectDashboard, async (req, res, next) => {
 
         const limit = user.filter(user => user.dataValues.department === department)
 
-        if (limit.length === 5) errors.push('Users limit reached for your department')
+        if (limit.length === 5) return res.send({ message: 'Users limit reached for your department'})
 
         const userExist = user.map(user => {
             if (user.dataValues.email === email || user.dataValues.fullName === fullName) {
-                return 'User already exist'
+                return 'User already exist';
             }
         })
 
-        if (userExist[0] !== undefined) errors.push(userExist[0])
+        if (userExist[0] !== undefined) return res.send({ message: userExist[0]})
 
 
-        if (userID.length !== 6) errors.push('Something went wrong, try again \n')
+        if (userID.length !== 6) return res.send({ message: 'Something went wrong, try again'})
 
         if (match.length < 1
             || department.substring(0, 3).toUpperCase() !== match[0].code.substring(0, 3).toUpperCase()) {
-            errors.push('Ooops! wrong code')
+                return res.send({ message: 'Oops! wrong code'})
         }
 
-        if (errors.length > 0) {
-            return res.send({
-                message: errors,
-                background: '#e74'
-            })
-        } else {
-            const user = await new User({
-                userID,
-                fullName,
-                email,
-                role,
-                department,
-                mobile_number,
-                date: `${new Date().getDate()}-${new Date().getMonth() + 1}-${new Date().getFullYear()}`,
-                password: hash
-            })
+        const userN = await new User({
+            userID,
+            fullName,
+            email,
+            role,
+            department,
+            mobile_number,
+            date: `${new Date().getDate()}-${new Date().getMonth() + 1}-${new Date().getFullYear()}`,
+            password: hash
+        })
 
-            /* // Configuring SMTP Server details
-            const configs = {
-                host: 'smtp.gmail.com',
-                port: 465,
-                secure: true,
-                xoauth2: xoauth2.createXOAuth2Generator({
-                    user: 'ctgwasira@gmail.com',
-                    pass: 'cain7331'
-                })
-            }
-
-            var poolConfig = {
-                pool: true,
-                host: 'smtp.gmail.com',
-                port: 465,
-                secure: true, // use SSL
-                auth: {
-                    user: 'caintakudzwa@gmail.com',
-                    pass: 'cain7331'
-                }
-            };
-            
-            let smtpTransport = nodemailer.createTransport(poolConfig)
-
-            smtpTransport.verify((err, success) => {
-                if (err) console.error(err);
-                console.log('Your config is correct');
-            });
-
-            let mailOptions;
-
-            mailOptions = {
-                from: 'ctgwasira@gmail.com',
-                to: user.email,
-                subject: 'Please take note of your Login ID.',
-                text: 'Use the following ID to login to your account: ' + user.userID
-            }
-
-            await smtpTransport.sendMail(mailOptions, (error, response) => {
-                if (error) {
-                    console.log(error)
-                    return res.end('error')
-                }
-                else {
-                    user.save()
-                    res.send({
-                        message: 'Success! You can now login',
-                        background: '#adfaad',
-                        status: 200
-                    })
-                }
-            }) */
-
-            await user.save()
-            res.send({
-                message: 'Success! You can now login',
-                background: '#adfaad',
-                status: 200
-            })
-        }
+        await userN.save()
+        res.send({
+            message: 'Success! You can now login',
+            status: 200
+        })
     }
     catch (error) {
-        res.send(error)
         console.log(error)
     }
 })
@@ -162,7 +114,7 @@ router.post('/users/login', auth.redirectDashboard, async (req, res) => {
             if (passMatched && match[0].code.startsWith(user.dataValues.department.substring(0, 3).toUpperCase())) {
                 req.session.userId = user.dataValues.userID
 
-                return res.redirect('/data')
+                return res.redirect('/users/welcome')
 
             } else {
                 return res.redirect('/users/login')

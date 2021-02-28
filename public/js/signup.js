@@ -85,19 +85,20 @@ const validateInput = async (e) => {
                 const message = document.querySelector('#message')
                 message.classList.add('message')
                 message.textContent = result.message
-                message.style.backgroundColor = result.background
+                message.style.backgroundColor = '#adfaad'
                 clearFields()
                 setTimeout(() => alert('You can now login, check your email to get your Login ID'), 3000)
-            } else {
-                const message = document.querySelector('#message')
-                message.classList.add('message')
-                message.textContent = 'An error occured, try back later'
-                message.style.backgroundColor = '#e74'
-                clearFields()
-
-                setInterval(() => message.style.display = 'none', 8000)
-                message.style.display = ''
+                return
             }
+
+            const message = document.querySelector('#message')
+            message.classList.add('message')
+            message.textContent = result.message
+            message.style.backgroundColor = '#e74'
+            clearFields()
+
+            setInterval(() => message.style.display = 'none', 8000)
+            message.style.display = ''
         },
         error: function( jqXHR, exception) {
             const msg = 'Ooops! error on our side, try back later'

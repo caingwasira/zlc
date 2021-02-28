@@ -10,8 +10,7 @@ const showSpinner = (display) => {
     const me = document.getElementById('loader')
     document.getElementById("loader").style.display = display;
     document.querySelector('.myInput').value = ''
-    document.querySelectorAll('.query')[1].value = ''
-    document.querySelectorAll('.query')[3].value = ''
+    document.querySelector('#sql').value = ''
 }
 
 const filterSearch = () => {
@@ -169,7 +168,7 @@ const fetchData = value => {
 }
 
 
-const queryData = (select, fields, from, tablename) => {
+const queryData = (sql) => {
     showSpinner('block')
     const thead = $("thead")
     const tbody = $("tbody")
@@ -180,7 +179,7 @@ const queryData = (select, fields, from, tablename) => {
     search_table.css('display', 'block')
     searchParent.html('')
 
-    fetch(`/data/query?select=${select}&fields=${fields}&from=${from}&table=${tablename}`).then((response) => {
+    fetch(`/data/query?sql=${sql}`).then((response) => {
         response.json().then((info) => {
             localStorage.setItem('info', JSON.stringify(info))
 
@@ -222,12 +221,10 @@ const queryData = (select, fields, from, tablename) => {
                     searchData(data.target.value)
                 })
             })
-
-            const tname = tablename.split(' ')
         
             document.querySelector('#stats').style.display = 'flex'
             $('.counter').html(table.length).css('display', 'inline-block')
-            $('.table-name').html(tname[0]).css('display', 'inline-block')
+            $('.table-name').html('Null').css('display', 'inline-block')
             document.querySelector('.print').style.display = 'inline-block'
 
         }).catch((error) => {
@@ -244,24 +241,18 @@ document.querySelector('#run').addEventListener('focus', () => {
 
 document.querySelector('#form').addEventListener('submit', (e) => {
     e.preventDefault()
-    const select = document.querySelector('#select').value.trim()
-    const fields = document.querySelector('#fields').value.trim()
-    const from = document.querySelector('#from').value.trim()
-    const table = document.querySelector('#tablename').value.trim()
+    const sql = document.querySelector('#sql').value.trim()
     document.querySelector('#run').innerHTML = '<div class="spinners"></div>loading...'
-    if(select === '' || fields === '' || from === '' || table === '') {
+    if(sql === '') {
         document.querySelector('#run').innerText = 'Run Query'
         return
     } else {
-        queryData(select, fields, from, table)
+        queryData(sql)
         document.querySelector('table').classList.remove('table')
     }
 
     const formData = {
-        select,
-        fields,
-        from,
-        table
+        sql
     }
 })
 
@@ -306,7 +297,7 @@ document.querySelector('#download').addEventListener('click', (e) => {
 //------------------ Sign out ------------------------------------------------------------\\
 setTimeout(() => {
     window.location.href = '/users/login'
-}, 1000*60*10)
+}, 1000*60*1000)
 
 document.querySelector('#account-user').innerHTML = `
 <a href="/logout" class="btn btn-secondary btn-sm logout">Logout</a>

@@ -10,10 +10,12 @@ router.get('/data',auth.redirectlogin, async (req, res) => {
 
     const user = await User.findOne({ where: { userID: req.session.userId }})
 
+    if(user.dataValues.department !== 'finance') res.redirect('/users/welcome')
+
     if(user !== null) {
         const name = user.dataValues.fullName.split(" ")
         res.render('index', {
-            name: name[1]
+            name: name[0]+" "+name[1]
         })
     }
 })
@@ -33,8 +35,7 @@ router.get('/logout', auth.redirectlogin, (req, res) => {
 // Data Fetch Endpoint for SQL Queries Executed from the Data View Endpoint
 router.get('/data/query', async (req, res, next) => {
     let errors = []
-    const { select, fields, from, table } = req.query
-    const sql = `${select} ${fields} ${from} ${table}`
+    const { sql } = req.query
     try { 
         const client = await pool.connect()
         const tableData = await client.query(sql)

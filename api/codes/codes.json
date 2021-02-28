@@ -1,5 +1,9 @@
 [
     {
+        "dept": "admin",
+        "code": "admin@7331"
+    },
+    {
         "dept": "Legal",
         "code": "LEG-ZLC-2020"
     },
@@ -21,10 +25,10 @@
 
     {
         "dept": "ICT",
-        "code": "ICT-ZLC-2020"
+        "code": "ICT"
     },
     {
         "dept": "Finance",
-        "code": "FIN-ZLC-2020"
+        "code": "FIN"
     }
 ]

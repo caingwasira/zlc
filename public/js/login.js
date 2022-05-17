@@ -16,9 +16,6 @@ const validateSignin = (e) => {
         input.nextElementSibling.classList.remove('valid')
     })
 
-    if(window.screen.width < 1000) errors.push('Screen is too small')
-    console.log(window.screen.width)
-
     if(errors.length > 0) {
         e.preventDefault()
         return false

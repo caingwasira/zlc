@@ -11,27 +11,21 @@
     <title>Techsuite | Sign In</title>
 </head>
 <body>
-    <div class="container login my-5">
+    <div class="container">
         <div class="row mt-5">
-            <div class="col-sm-4 mx-auto my-5 p-3 bg-light shadow-lg h-50">
+            <div class="login col-sm-4 mx-auto my-5 p-3 h-50">
                 <h4 class="text-center mb-3">
                     <span class="text-muted">Login</span>
                     <p class="text-center my-2"><small id="message">{{message}}</small></p>
                 </h4>
                 <form class="form-signin" method="post" action="/users/login">
                     <div username class="input-group mb-4">
-                        <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                        </div>
                         <input type="text" name="id" id="id" class="form-control" placeholder="ID">
                         <small class="invalid" style="width: 100%;">Oops! fill in the ID</small>
                     </div>
 
                     <div username class="input-group mb-4">
-                        <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                        </div>
-                        <input type="password" name="code" id="code" class="form-control" placeholder="Department Code">
+                        <input type="text" name="code" id="code" class="form-control" placeholder="Department Code">
                         <small class="invalid" style="width: 100%;">Oops! fill in the code</small>
                     </div>
 
@@ -47,7 +41,7 @@
             </div>
         </div>
     </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="/js/login.js"></script>
 </body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/js/login.js"></script>
 </html>

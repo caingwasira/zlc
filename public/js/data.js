@@ -7,10 +7,8 @@ const show = () => {
 }
 
 const showSpinner = (display) => {
-    const me = document.getElementById('loader')
     document.getElementById("loader").style.display = display;
     document.querySelector('.myInput').value = ''
-    document.querySelector('#sql').value = ''
 }
 
 const filterSearch = () => {
@@ -123,7 +121,7 @@ const fetchData = value => {
             const headers = Object.keys(table[0])
 
             let tr = ''
-            let option = '<option value="0" class="new-option">search_by:</option>'
+            let option = '<option value="0" class="new-option">filter by:</option>'
             let searchValue = 0
             for(let i = 0; i < headers.length; i++) {
                 let header = headers[i]
@@ -186,11 +184,10 @@ const queryData = (sql) => {
             const table = JSON.parse(localStorage.getItem('info'))
 
             showSpinner('none')
-            document.querySelector('#run').innerText = 'Run Query'
             const headers = Object.keys(table[0])
 
             let tr = ''
-            let option = '<option class="new-option">search_by:</option>'
+            let option = '<option class="new-option">filter by:</option>'
             let searchValue = 0
             for(let i = 0; i < headers.length; i++) {
                 let header = headers[i]
@@ -234,26 +231,11 @@ const queryData = (sql) => {
     })
 }
 
-document.querySelector('#run').addEventListener('focus', () => {
-    const select = document.querySelector('#select')
-    document.querySelector('#run').innerHTML = '<div class="spinners"></div>loading...'
-})
 
-document.querySelector('#form').addEventListener('submit', (e) => {
+document.querySelector('#run').addEventListener('click', (e) => {
     e.preventDefault()
-    const sql = document.querySelector('#sql').value.trim()
-    document.querySelector('#run').innerHTML = '<div class="spinners"></div>loading...'
-    if(sql === '') {
-        document.querySelector('#run').innerText = 'Run Query'
-        return
-    } else {
-        queryData(sql)
-        document.querySelector('table').classList.remove('table')
-    }
-
-    const formData = {
-        sql
-    }
+    const sql = 'select * from employees'                             
+    queryData(sql)
 })
 
 function download() {

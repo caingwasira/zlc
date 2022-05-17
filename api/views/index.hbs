@@ -35,11 +35,11 @@
                     <h5><a class="btn btn-small btn-outline-info my-1"><small>Overview</small></a></h5>
 
                     <div class="editor my-1">
-                        <button class="btn btn-small btn-outline-info" data-toggle="modal" data-target="#queryEditor"
-                            data-whatever="@mdo">
-                            <small>Q Editor</small>
+                        <button type="submit" class="btn btn-small btn-outline-info" id="run">
+                            <small>Load Data</small>
                         </button>
                     </div>
+                    <a href="/users/sys-admin" class="btn btn-small btn-outline-warning my-2">Add User</a>
                 </div>
                 <div class="col-lg-11">
                     <div class="info" id="stats">
@@ -53,7 +53,7 @@
                             <select data-toggle="tooltip" data-placement="top"
                                 title="Search this table by any field in the dropdown" name="search"
                                 id="search-criteria"></select>
-                            <input type="text" id="search_by_id" placeholder="Search table...">
+                            <input type="text" id="search_by_id" placeholder="filter value...">
                             <span class="view ml-4">
                                 <button id="view-default" class="view-btn"><i class="fas fa-table"></i></button>
                                 <button id="view-light" class="view-btn"><i class="fas fa-table"></i></button>
@@ -80,33 +80,6 @@
                         </div>
                     </div>
                     <div id="loader" aria-placeholder="loading..."></div>
-
-                    <div class="modal fade" id="queryEditor" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h6 class="modal-title" id="exampleModalLabel">Run queries to your database</h6>
-                                    <button type="button" class="close text-danger" data-dismiss="modal"
-                                        aria-label="Close">
-                                        <span aria-hidden="true">close</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form class="container" id="form">
-                                        <textarea class="sql" name="query" id="sql" cols="40" rows="15"></textarea>
-                                        <button type="submit" id="run" class="query btn btn-small btn-info">Execute
-                                            Query
-                                        </button>
-                                        <button type="button" class="close text-danger" data-dismiss="modal"
-                                            aria-label="Close">
-                                            <span aria-hidden="true">close</span>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">

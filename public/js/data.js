@@ -6,10 +6,14 @@ const show = () => {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
+//------------------ Data Loading------------------------------------------------------------\\
+
 const showSpinner = (display) => {
     document.getElementById("loader").style.display = display;
     document.querySelector('.myInput').value = ''
 }
+
+//-------------------Search Table------------------------------------------------------------\\
 
 const filterSearch = () => {
     input = document.querySelector('.myInput')
@@ -64,7 +68,7 @@ const searchData = (criteria) => {
     $('.counter').html(count).css('display', 'inline-block')
 }
 
-
+//-------------------Print Table------------------------------------------------------------\\
 const printData = () => {
     const table = document.getElementById('table')
     let htmlToPrint = `
@@ -98,6 +102,8 @@ document.querySelector('#print').addEventListener('click', (e) => {
     printData()
 })
 
+
+//-------------------Fetch Table------------------------------------------------------------\\
 const fetchData = value => {
     show()
     showSpinner('block')
@@ -166,7 +172,8 @@ const fetchData = value => {
 }
 
 
-const queryData = (sql) => {
+//-------------------Initial Data Loaded------------------------------------------------------------\\
+const initLoad = (sql) => {
     showSpinner('block')
     const thead = $("thead")
     const tbody = $("tbody")
@@ -235,9 +242,11 @@ const queryData = (sql) => {
 document.querySelector('#run').addEventListener('click', (e) => {
     e.preventDefault()
     const sql = 'select * from employees'                             
-    queryData(sql)
+    initLoad(sql)
 })
 
+
+//------------------ Download Table ------------------------------------------------------------\\
 function download() {
     var rows = document.querySelectorAll('tbody > tr');
     // Construct csv
@@ -285,7 +294,7 @@ document.querySelector('#account-user').innerHTML = `
 <a href="/logout" class="btn btn-secondary btn-sm logout">Logout</a>
 `
 
-//------------------ Table View ------------------------------------------------------------\\
+//------------------ Table Views ------------------------------------------------------------\\
 
 const changeView = (view, remove1, remove2) => {
     const row = document.querySelectorAll('tbody > tr')
@@ -326,24 +335,3 @@ const tableNames = () => {
 }
 
 document.addEventListener('loadeddata', tableNames())
-
-
-//-------------------------------Geolocation of farms------------------------------------------\\
-
-function showLocation() {
-    const rows = document.querySelectorAll('tr')
-    const table_name = document.querySelector('.table-name').textContent
-
-    console.log(table_name)
-
-    if(table_name === 'plot_farm_identification') {
-        rows.forEach( row => {
-            row.addEventListener('click', e => {
-                console.log(typeof row)
-                console.log(row)
-            })
-        })
-    }
-}
-
-document.querySelector('tbody').addEventListener('click', showLocation)

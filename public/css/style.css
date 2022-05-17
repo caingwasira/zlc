@@ -12,7 +12,7 @@ body {
 /*--------------NAVIGATION- LAYOUT VIEW--------------------------------*/
 
 .logo {
-    color: #fff;
+    color: #ffffffff;
 }
 
 .logo img {
@@ -23,17 +23,17 @@ body {
 .logo span { color: #c56c31; font-size: small; font-weight: bolder;}
 
 .mynav {
-    background-color: #0d2f3fe3;
+    background-color: #000000e3;
 }
 
 .mynav li a {
-    color: #fff;
-    font-size: 2vmin;
-    font-weight: 400;
+    color: #ffffffff;
+    font-size: 1.7vmin;
+    font-weight: 500;
 }
 
 .mynav li a:hover {
-    color: #ccc;
+    color: #ffffffff;
 }
 
 .current-link {
@@ -70,16 +70,18 @@ body {
     }
 }
 
-#account-user:hover {
-    padding: .3rem;
+#account-user {
+    background: #1f69af;
+    padding: .5rem;
+    font-weight: 300;
     border-radius: 5px;
-    color: #fff;
+    color: #ffffffff;
     cursor: pointer;
 
 }
 
-.account-user-focus {
-    border: 1px solid #fff;
+#account-user:hover {
+    background-color: #3996ec
 }
 
 /*--------------HOME-----------------------------------------------*/
@@ -88,13 +90,13 @@ body {
 
 .home {
     flex-grow: 1;
-    background-color: #ccc;
+    background-color: #ffffffff;
 }
 
 .main-content {
     font-family: 'Raleway', sans-serif;
     height: 60vh;
-    background: #333 url('/images/orelle.jpg') no-repeat center center / cover;
+    background: #202020 no-repeat center center / cover;
     background-attachment: fixed;
     display: flex;
     flex-direction: column;
@@ -102,46 +104,46 @@ body {
     padding: 0 8rem;
 }
 
-.header { background-color: #0d2f3fe3;}
+.header { background-color: #202020;}
 
 p { margin: 0 4rem;}
 
 p.typewriter {
-    font-size: 1.5rem;
+    font-size: 1.0rem;
     font-weight: lighter;
 
     
 }
 
 .typewriter-txt {
-    background-color: #ccc;
+    background-color: #1f69af;
     border-radius: 5px;
-    font-size: 1.2rem;
-    font-weight: 500;
-    padding: 5px 10px;
-    color: #0d2f3fe3;
+    font-size: 1.0rem;
+    font-weight: 300;
+    padding: 12px;
+    color: #ffffffff;
 }
 
 p.moto, .moto small {
     width: 70%;
-    color: #ccc;
+    color: #ffffffff;
     font-size: medium;
-    font-weight: 600;
+    font-weight: 300;
 }
 
 .txt-type > .text {
     padding: 0 .3rem;
-    color: #ccc;
-    border-right: .08rem solid #c56c31;
+    color: #ffffffff;
+    border-right: .08rem solid #ffffffff;
 }
 
 
 .post {
-    background-color: #f8f8f8;
+    background-color: #ffffffff;
 }
 
 a .title {
-    color: #046286;
+    color: #202020;
 }
 
 a small {
@@ -151,7 +153,7 @@ a small {
 .services {
     text-decoration: none;
     list-style: none;
-    color: #042230e3;
+    color: #202020;
     font-weight: 400;
 }
 
@@ -163,7 +165,7 @@ a small {
 
 div.services:hover { 
     padding: 5px;
-    background-color:#a5a3a3;
+    background-color:#ffffffff;
     cursor: pointer;
     border-radius: 5px;
 }
@@ -172,7 +174,13 @@ div.services:hover {
 /*--------------FOOTER-----------------------------------------------*/
 
 .footer {
-    background-color: #0d2f3fe3;
+    background-color: #202020;
+}
+
+.footer p {
+    color: #ffffffff;
+    font-weight: 300;
+    font-size: small;
 }
 
 li { list-style: none;}
@@ -183,7 +191,10 @@ li { list-style: none;}
     font-size: .7rem;
 }
 
-.links .fab { font-size: 1.1rem;}
+.links .fab { 
+    font-size: 1.1rem;
+    color: #1f69af;
+}
 
 .links:hover {
     text-decoration-color: #ccc;
@@ -193,18 +204,18 @@ li { list-style: none;}
 #subscribe {
     width: 100% !important; 
     padding: 5px !important;
-    color:#c56c31 !important;
-    border: .5px solid #c56c31 !important;
+    color:#202020 !important;
+    border: none;
 }
 
 #subscribe:hover {
-    background-color: #c56c31 !important;
+    background-color: #1f69af !important;
     color: #fff !important;
 }
 
 .techsuite {
     border-top: 1px solid #ccc;
-    background-color: #0d2f3fe3;
+    background-color: #202020;
     font-size: .7em;
     color: #ccc;
 }
@@ -253,7 +264,7 @@ li { list-style: none;}
 .about-section {
     padding: 50px;
     text-align: center;
-    background: #333 url('/images/orelle.jpg') center center no-repeat;
+    background: #202020 center center no-repeat;
     color: white;
     }
 

@@ -17,16 +17,7 @@
     {{>nav}}
 
     <script>
-        $("[href]").each(function() {
-            if (this.href == window.location.href) {
-                $(this).addClass("current-link");
-            }
-        });
-
-        document.querySelector('#account-user').innerHTML = `
-        <button class="btn btn-outline-secondary btn-sm signin">Admin</button>
-        `
-        document.querySelector('.signin').addEventListener('click', () => {
+        document.querySelector('#account-user').addEventListener('click', () => {
             window.location.href = '/users/login'
         })
     </script>

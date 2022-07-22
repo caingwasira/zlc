@@ -53,8 +53,6 @@ section {
 
   .dropdown option:hover {background-color: #ddd;}
 
-.show { display: block;}
-
 
 .myInput {
     padding: 5px 5px;
@@ -273,5 +271,12 @@ tbody p {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-
   
+  .overview {
+      background-color: #202020;
+      color: #ffffffff;
+      text-align: center;
+  }
+
+  .hide {display: none;}
+  .show {display: block;}

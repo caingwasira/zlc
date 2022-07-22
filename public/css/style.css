@@ -11,25 +11,26 @@ body {
 
 /*--------------NAVIGATION- LAYOUT VIEW--------------------------------*/
 
-.logo {
+.logo { 
+    margin-left: 80px;
+}
+.logo p { 
+    font-size: medium; 
+    font-weight: bolder;
+    margin: 0 10px;
     color: #ffffffff;
 }
 
-.logo img {
-    max-width: 40px;
-    height: auto;
-}
-
-.logo span { color: #c56c31; font-size: small; font-weight: bolder;}
-
 .mynav {
     background-color: #000000e3;
+    font-style: oblique;
 }
 
 .mynav li a {
     color: #ffffffff;
     font-size: 1.7vmin;
     font-weight: 500;
+    letter-spacing: 0.15rem;
 }
 
 .mynav li a:hover {
@@ -37,7 +38,7 @@ body {
 }
 
 .current-link {
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid #1f69af;
 }
 
 @media(max-width: 1000px) {

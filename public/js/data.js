@@ -238,7 +238,6 @@ const initLoad = (sql) => {
     })
 }
 
-
 document.querySelector('#run').addEventListener('click', (e) => {
     e.preventDefault()
     const sql = 'select * from employees'                             
@@ -313,6 +312,11 @@ document.querySelector('#view-dark').addEventListener('click', () => changeView(
 //-------------------------------Load Table Names------------------------------------------\\
 
 const tableNames = () => {
+    const username = document.querySelector(".username").innerHTML
+    const adduser = document.querySelector(".adduser");
+    if(username !== 'Cain Gwasira') adduser.classList.add('hide')
+     else adduser.classList.remove('hide')
+
     fetch('/data/table_names')
     .then( res => res.json())
     .then( tableNames => {

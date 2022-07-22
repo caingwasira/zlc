@@ -10,13 +10,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="https://kit.fontawesome.com/ed06971682.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="/images/tech2.png">
-    <title>Techsuite | Industries</title>
+    <title>Orelle Group | Services</title>
 </head>
 <body>
     {{>nav}}
 
     <script>
+        $("[href]").each(function() {
+            if (this.href == window.location.href) {
+                $(this).addClass("current-link");
+            }
+        });
+        
         document.querySelector('#account-user').addEventListener('click', () => {
             window.location.href = '/users/login'
         })

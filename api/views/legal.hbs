@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="https://kit.fontawesome.com/ed06971682.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="/images/tech2.png">
-    <title>Techsuite | Services</title>
+    <title>Orelle Group | Solutions</title>
 </head>
 <body>
     {{>nav}}
@@ -23,10 +22,7 @@
             }
         });
 
-        document.querySelector('#account-user').innerHTML = `
-        <button class="btn btn-outline-secondary btn-sm signin">Admin</button>
-        `
-        document.querySelector('.signin').addEventListener('click', () => {
+        document.querySelector('#account-user').addEventListener('click', () => {
             window.location.href = '/users/login'
         })
     </script>

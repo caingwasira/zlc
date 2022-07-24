@@ -95,8 +95,11 @@ body {
 
 .main-content {
     font-family: 'Raleway', sans-serif;
-    height: 87vh;
+    height: 90vh;
     background-image: url('/images/soft2.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -111,12 +114,11 @@ p.typewriter {
     font-size: 1.0rem;
     letter-spacing: 0.15rem;
     font-weight: lighter;
-
-    
 }
 
 .typewriter-txt {
     background-color: #000000;
+    opacity: 0.7;
     border-radius: 5px;
     font-size: 1.0rem;
     font-weight: 300;
@@ -265,8 +267,8 @@ li { list-style: none;}
 .about-section {
     padding: 50px;
     text-align: center;
-    background: #202020 center center no-repeat;
-    color: white;
+    font-weight: 700;
+    color: #dadada;
     }
 
     .container::after, .row::after {

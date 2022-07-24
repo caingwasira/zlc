@@ -8,9 +8,7 @@ const User = require('../../models/user')
 // Data View Endpoint
 router.get('/data',auth.redirectlogin, async (req, res) => {
 
-    const user = await User.findOne({ where: { userID: req.session.userId }})
-
-    if(user.dataValues.department !== 'finance') res.redirect('/users/welcome')
+    const user = await User.findOne({ where: { userId: req.session.userId }})
 
     if(user !== null) {
         const name = user.dataValues.fullName.split(" ")

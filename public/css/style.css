@@ -23,7 +23,6 @@ body {
 
 .mynav {
     background-color: #000000e3;
-    font-style: oblique;
 }
 
 .mynav li a {
@@ -96,9 +95,8 @@ body {
 
 .main-content {
     font-family: 'Raleway', sans-serif;
-    height: 60vh;
-    background: #202020 no-repeat center center / cover;
-    background-attachment: fixed;
+    height: 87vh;
+    background-image: url('/images/soft2.jpg');
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -111,18 +109,19 @@ p { margin: 0 4rem;}
 
 p.typewriter {
     font-size: 1.0rem;
+    letter-spacing: 0.15rem;
     font-weight: lighter;
 
     
 }
 
 .typewriter-txt {
-    background-color: #1f69af;
+    background-color: #000000;
     border-radius: 5px;
     font-size: 1.0rem;
     font-weight: 300;
     padding: 12px;
-    color: #ffffffff;
+    color: #999999;
 }
 
 p.moto, .moto small {
@@ -130,6 +129,7 @@ p.moto, .moto small {
     color: #ffffffff;
     font-size: medium;
     font-weight: 300;
+    letter-spacing: 0.15rem;
 }
 
 .txt-type > .text {

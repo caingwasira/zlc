@@ -98,7 +98,7 @@ const printData = () => {
 
 document.querySelector('#print').addEventListener('click', (e) => {
     const passcord = document.querySelector('#recipient-name').value.trim()
-    if(passcord !== 'cain') return
+    if(passcord !== 'orelle') return
     printData()
 })
 
@@ -279,9 +279,8 @@ document.querySelector('.printer').addEventListener('click', () => document.quer
 document.querySelector('.download').addEventListener('click', () => document.querySelector('#recipient-name').value = '')
 document.querySelector('#download').addEventListener('click', (e) => {
     const passcord = document.querySelector('#recipient-name').value.trim()
-    if(passcord !== 'cain') return
+    if(passcord !== 'orelle') return
     download()
-    console.log('Document printed')
 })
 
 //------------------ Sign out ------------------------------------------------------------\\

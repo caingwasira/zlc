@@ -22,7 +22,7 @@ sequelize.authenticate()
 
 const User = sequelize.define('user', {
     // Attributes
-    userID: {
+    userId: {
         type: Sequelize.INTEGER,
         allowNull: false
     },

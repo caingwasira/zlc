@@ -4,15 +4,12 @@ const router = express.Router()
 const User = require('../../models/user')
 const bcrypt = require('bcrypt')
 const auth = require('../../middleware/auth')
-const { json } = require('body-parser')
-const nodemailer = require('nodemailer')
-const xoauth2 = require('xoauth2')
 
 
 // Welcome users
 
 router.get('/users/welcome', auth.redirectlogin, async (req, res) => {
-    const user = await User.findOne({ where: { userID: req.session.userId }})
+    const user = await User.findOne({ where: { userId: req.session.userId }})
 
     res.render('welcome', {
         name: user.dataValues.fullName
@@ -21,9 +18,10 @@ router.get('/users/welcome', auth.redirectlogin, async (req, res) => {
 
 // Sign Up View Endpoint
 router.get('/users/sys-admin', auth.redirectlogin, async (req, res) => {
-    const user = await User.findOne({ where: { userID: req.session.userId }})
 
-    if(user.dataValues.email === 'admin@orelle.com') return res.render('signup')
+    const user = await User.findOne({ where: { userId: req.session.userId }})
+
+    if(user.dataValues.email === 'admin@orelle.co.zw') return res.render('signup')
     res.redirect('/users/welcome')
 })
 
@@ -31,7 +29,7 @@ router.post('/signup', auth.redirectDashboard, async (req, res, next) => {
     try {
         const { fullName, email, role, department, zlc_code, mobile_number, password } = req.body
 
-        const userID = Math.floor(Math.random() * 1000000).toString()
+        const userId = Math.floor(Math.random() * 1000000).toString()
 
         const hash = await bcrypt.hashSync(password, 10)
 
@@ -43,7 +41,7 @@ router.post('/signup', auth.redirectDashboard, async (req, res, next) => {
 
         const match = await codes.filter(dept => zlc_code === dept.code)
 
-        const user = await User.findAll({ attributes: ['email', 'fullName', 'department', 'userID'] })
+        const user = await User.findAll({ attributes: ['email', 'fullName', 'department', 'userId'] })
 
         const limit = user.filter(user => user.dataValues.department === department)
 
@@ -58,7 +56,7 @@ router.post('/signup', auth.redirectDashboard, async (req, res, next) => {
         if (userExist[0] !== undefined) return res.send({ message: userExist[0]})
 
 
-        if (userID.length !== 6) return res.send({ message: 'Something went wrong, try again'})
+        if (userId.length !== 6) return res.send({ message: 'Something went wrong, try again'})
 
         if (match.length < 1
             || department.substring(0, 3).toUpperCase() !== match[0].code.substring(0, 3).toUpperCase()) {
@@ -66,7 +64,7 @@ router.post('/signup', auth.redirectDashboard, async (req, res, next) => {
         }
 
         const userN = await new User({
-            userID,
+            userId,
             fullName,
             email,
             role,
@@ -106,13 +104,13 @@ router.post('/users/login', auth.redirectDashboard, async (req, res) => {
 
         if (isNaN(id)) return res.redirect('/users/login')
 
-        const user = await User.findOne({ where: { userID: id } })
+        const user = await User.findOne({ where: { userId: id } })
 
         if (user !== null && match.length > 0) {
             const passMatched = await bcrypt.compare(password, user.dataValues.password)
 
             if (passMatched && match[0].code.startsWith(user.dataValues.department.substring(0, 3).toUpperCase())) {
-                req.session.userId = user.dataValues.userID
+                req.session.userId = user.dataValues.userId
 
                 return res.redirect('/users/welcome')
 

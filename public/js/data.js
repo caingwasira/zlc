@@ -313,7 +313,7 @@ document.querySelector('#view-dark').addEventListener('click', () => changeView(
 const tableNames = () => {
     const username = document.querySelector(".username").innerHTML
     const adduser = document.querySelector(".adduser");
-    if(username !== 'Cain Gwasira') adduser.classList.add('hide')
+    if(username !== 'System Admin') adduser.classList.add('hide')
      else adduser.classList.remove('hide')
 
     fetch('/data/table_names')

@@ -11,7 +11,8 @@ const sequelize = new Sequelize(
         ssl: {
             rejectUnauthorized: false,
           },
-    }
+    },
+    connectionTimeoutMillis: 100000
 })
 
 sequelize.authenticate()

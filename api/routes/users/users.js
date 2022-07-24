@@ -17,13 +17,12 @@ router.get('/users/welcome', auth.redirectlogin, async (req, res) => {
 })
 
 // Sign Up View Endpoint
-router.get('/users/sys-admin', async (req, res) => {
+router.get('/users/sys-admin', auth.redirectlogin, async (req, res) => {
 
-    //const user = await User.findOne({ where: { userId: req.session.userId }})
+    const user = await User.findOne({ where: { userId: req.session.userId }})
 
-    //if(user.dataValues.email === 'admin@orelle.co.zw') 
-    return res.render('signup')
-    //res.redirect('/users/welcome')
+    if(user.dataValues.email === 'admin@orelle.co.zw') return res.render('signup')
+    res.redirect('/users/welcome')
 })
 
 router.post('/signup', auth.redirectDashboard, async (req, res, next) => {

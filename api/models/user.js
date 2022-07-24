@@ -1,14 +1,16 @@
 const Sequelize = require('sequelize')
-const config = require('../../config').dev
-const conn = `
-postgresql://${config.user}:${config.secret}@${config.ip_address}:${config.port}/${config.db_name}`
-
+//const config = require('../../config').dev
+//const conn = `postgresql://${config.user}:${config.secret}@${config.ip_address}:${config.port}/${config.db_name}`
+const conn = 'postgres://lnccscsuoflqva:8fb1ccd4324e799797a18491476e818691d3fa80aa443f76c446ea16c54387be@ec2-44-206-214-233.compute-1.amazonaws.com:5432/da4qcge0164922'
 const sequelize = new Sequelize(
     conn,
  {
     logging: false,
-    define: {
-        timestamps: false
+    dialect: 'postgres',
+    dialectOptions: {
+        ssl: {
+            rejectUnauthorized: false,
+          },
     }
 })
 

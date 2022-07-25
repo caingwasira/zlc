@@ -80,6 +80,10 @@ body {
     .navbar-brand img {
         width: 2rem !important;
     }
+
+    #account-user {
+        padding: 0;
+    }
 }
 
 #account-user {

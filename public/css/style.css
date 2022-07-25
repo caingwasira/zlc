@@ -242,7 +242,7 @@ li { list-style: none;}
 /*------------------------------Sign Up------------------------------------------*/
 
 .signup {
-    background: #333;
+    background-color: #e4e4e4;
     border-radius: 5px;
 }
     
@@ -274,7 +274,7 @@ li { list-style: none;}
 
 
 .login {
-    background-color: #4e4c4c;
+    background-color: #e4e4e4;
     border-radius: 5px;
 }
 

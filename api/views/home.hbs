@@ -187,6 +187,10 @@
         $(this).addClass("current-link");
       }
     });
+
+    document.querySelector('#account-user').addEventListener('click', () => {
+            window.location.href = '/users/login'
+    })
   </script>
   <script src="/js/home.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"

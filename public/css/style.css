@@ -52,6 +52,10 @@ body {
         margin-top: 5rem;
     }
 
+    .typewriter {
+        margin-bottom: 3px;
+    }
+
 
     .home {
         padding-top: auto !important;

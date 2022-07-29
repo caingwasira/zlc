@@ -23,7 +23,7 @@ const filterSearch = () => {
 
     for(let i=0; i < option.length; i++) {
         txtValue = option[i].textContent || option[i].innerText;
-        if(txtValue.toUpperCase().indexOf(filter) > -1) {
+        if(txtValue.toUpperCase().startsWith(filter, 0)) {
             option[i].style.display = ''
         } else {
             option[i].style.display = 'none'
@@ -285,8 +285,8 @@ document.querySelector('#download').addEventListener('click', (e) => {
 
 //------------------ Sign out ------------------------------------------------------------\\
 setTimeout(() => {
-    window.location.href = '/users/login'
-}, 1000*60*1000)
+    window.location.href = '/logout'
+}, 1000*60*30)
 
 document.querySelector('#account-user').innerHTML = `
 <a href="/logout" class="btn btn-secondary btn-sm logout">Logout</a>

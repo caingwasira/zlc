@@ -21,6 +21,13 @@ body {
     color: #ffffffff;
 }
 
+.img-responsive {
+    height: auto;
+    width: auto;
+    max-height: 72px;
+    max-width: 250px;
+}
+
 .mynav {
     background-color: #000000e3;
 }
